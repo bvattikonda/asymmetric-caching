@@ -14,6 +14,9 @@ extern "C" {
 #include <rabin.h>
 #include <lookup3.h>
 
+#define DOWN_BASE_STATION_QUEUE 0
+#define DOWN_MOBILE_QUEUE 1
+
 #define ETHER_TYPE_IP (0x0800)
 #define IP_PROTO_TCP (6)
 #define IP_PROTO_UDP (17)

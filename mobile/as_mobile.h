@@ -3,9 +3,14 @@
 #define ARORDER 4
 #define DTHRESH 20
 
+#define WINDOW_FACTOR 3
+#define MATCH_THRESHOLD 0.70
+#define ADVERTISE_COUNT (MTU / HASH_LEN)
+
 struct hash_information {
     time_t timestamp;
     unsigned char *chunk;
+    uint16_t chunk_length;
     set <uint32_t> oid_set;
 };
 
@@ -13,6 +18,8 @@ struct object_information {
     time_t timestamp;
     uint32_t previous_oid;
     uint32_t next_oid;
+    bool previous_oid_set;
+    bool next_oid_set;
     list<uint64_t> hash_list;
 };
 
@@ -46,9 +53,9 @@ struct flow_packet {
 
 struct chunk_hash {
     uint64_t hash_value;
-    uint16_t chunk_len;
-    chunk_hash(uint64_t _hash_value, uint16_t _chunk_len) :
-        hash_value(_hash_value), chunk_len(_chunk_len) {}
+    uint16_t chunk_length;
+    chunk_hash(uint64_t _hash_value, uint16_t _chunk_length) :
+        hash_value(_hash_value), chunk_length(_chunk_length) {}
 };
 
 typedef map<connection, flow_packet *> ConnectionSeriesType;
@@ -58,3 +65,7 @@ typedef matrix<double> dMatrix;
 
 bool detect_boundary(flow_packet *joint_packet, uint32_t index,
         uint32_t lthresh);
+
+bool best_matched_flowlet(uint32_t current_oid, list<chunk_hash *>
+        *payload_hash_list, set<uint32_t> *past_flowlets, uint32_t
+        *best_oid);

@@ -1,9 +1,9 @@
-CFLAGS = -g
+CFLAGS = -g 
 CLIBS = -lrt -lnfnetlink -lnetfilter_queue
 
 all: as_mobile 
 
-OBJECTS = as_mobile.o detect_boundary.o
+OBJECTS = as_mobile.o detect_boundary.o best_matched_flowlet.o
 UTIL_OBJECTS = ../common/util.o ../common/rabin.o ../common/lookup3.o\
                ../common/as_common.o
 
