@@ -465,8 +465,6 @@ int build_advertisement(struct nfq_data* buf, int *size) {
         *size = ntohs(ip_hdr->ip_len);
         return id;
     }
-    ip_hdr->ip_p = ADVERT_PROT;
-    ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
 
     printlog(logfile, system_loglevel, LOG_DEBUG, "Length parameters,"
             "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
@@ -478,7 +476,7 @@ int build_advertisement(struct nfq_data* buf, int *size) {
         advertise_hashes.end(); it++) {
         hash_value = (*it);
         printlog(logfile, system_loglevel, LOG_DEBUG, 
-                "Advertising %llu\n", hash_value);
+                "Advertising %llx\n", hash_value);
         right = (uint32_t)(hash_value & 0x00000000ffffffff);
         left = (uint32_t)(hash_value >> 32);
         assert(hash_value == (right + (((uint64_t)left)<<32)));
@@ -488,7 +486,10 @@ int build_advertisement(struct nfq_data* buf, int *size) {
         new_payload_len += 4;
     }
 
+    ip_hdr->ip_p = ADVERT_PROT;
     *size = new_payload_len + size_ip + size_tcp;
+    ip_hdr->ip_len = htons(*size);
+    ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
     return id;
 }
 
@@ -645,7 +646,7 @@ int createQueue(struct nfq_handle *h, int queue_num, int
     int rv = 0;
 
     printf("binding this socket to queue %d\n", queue_num);
-    qh = nfq_create_queue(h,  queue_num, callback, NULL);
+    qh = nfq_create_queue(h, queue_num, callback, NULL);
     if (!qh) {
         fprintf(stderr, "error during nfq_create_queue()\n");
         exit(1);
@@ -659,8 +660,7 @@ int createQueue(struct nfq_handle *h, int queue_num, int
     printf("Packet Mode Set\n");
     fd = nfq_fd(h);
 
-    if(nfq_set_queue_maxlen(qh, 100) < 0 )
-    {
+    if(nfq_set_queue_maxlen(qh, 100) < 0 ) {
         fprintf(stderr,"---\nCannot set queue max len \n---");
     }
 
@@ -715,6 +715,7 @@ int main() {
 
     int n = 0, rv = 0;
     char buf[4096] __attribute__ ((aligned));
+    nfnl_rcvbufsiz(nfq_nfnlh(h), 4096 * 4096);
     while(true) {
         FD_ZERO(&rfds);
         FD_SET(down_fd, &rfds);
@@ -744,7 +745,6 @@ int main() {
         }
     }
 
-    nfnl_rcvbufsiz(nfq_nfnlh(h), 2050 * 4096);
     // start the upstream code, later move to a thread
     return 0;
 }
