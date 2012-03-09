@@ -150,6 +150,24 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
         hash_memory[hash_value]->oid_set.insert(current_oid);
         object_memory[current_oid]->hash_list.push_back(hash_value);
     }
+    uint16_t chunked_upto = 0;
+    if(num_chunks == 0) {
+        chunked_upto = 0;
+    } else {
+        chunked_upto = store_marks[num_chunks - 1];
+    }
+    if(chunked_upto < payload_len - 1) {
+        chunk_length = payload_len - chunked_upto;
+        left = 0, right = 0;
+        hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "update_hash_memory: Hashing chunk from %d to %d\n",
+                chunked_upto, payload_len);
+        hash_value = right + (((uint64_t)left)<<32);
+        hash_memory[hash_value]->timestamp = current_time;
+        hash_memory[hash_value]->oid_set.insert(current_oid);
+        object_memory[current_oid]->hash_list.push_back(hash_value);
+    }
 
     /* store these hashes in the hash memory */
     object_memory[current_oid]->timestamp = current_time;

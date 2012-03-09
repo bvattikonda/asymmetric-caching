@@ -108,7 +108,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "\n");
 
     uint32_t left = 0, right = 0;
-
+    uint64_t hash_value = 0;
     uint16_t chunk_length = 0, last_marker = 0, packed_upto = 0;
     time_t current_timestamp = time(NULL);
     for(i=0; i < num_chunks; i++) {
@@ -117,7 +117,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
         printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
                 " from %d to %d\n", last_marker, store_marks[i]);
-        uint64_t hash_value = right + (((uint64_t)left)<<32);
+        hash_value = right + (((uint64_t)left)<<32);
         if(regular_cache.find(hash_value) != regular_cache.end()) {
             printlog(logfile, system_loglevel, LOG_DEBUG, "Putting regular hash %llx for chunk length  %d\n", hash_value, chunk_length);
             packed_upto += pack_hash_value(new_packet + packed_upto, left, right);
@@ -156,6 +156,13 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         chunked_upto = store_marks[num_chunks - 1];
     }
     if(chunked_upto < payload_len - 1) {
+        left = 0, right = 0;
+        chunk_length = payload_len - chunked_upto;
+        hashlittle2((void*)(payload + chunked_upto), chunk_length, &right, &left);
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
+                " from %d to %d\n", chunked_upto, payload_len);
+        hash_value = right + (((uint64_t)left)<<32);
+        regular_cache[hash_value] = current_timestamp;
         pack_buffer(uint16_t, new_packet, packed_upto, htons(payload_len -
                     chunked_upto));
         packed_upto += 2;
