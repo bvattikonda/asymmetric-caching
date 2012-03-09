@@ -117,8 +117,8 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
         chunk_length = store_marks[i] - last_marker; 
         left = 0, right = 0;
         hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
-        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk\
-                from %d to %d\n", last_marker, store_marks[i]);
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
+                "from %d to %d\n", last_marker, store_marks[i]);
         hash_value = right + (((uint64_t)left)<<32);
         if(hash_memory.find(hash_value) == hash_memory.end()) {
             hash_information *chunk_information = new
@@ -300,7 +300,7 @@ void optimize_feedback(set<uint64_t> *advertise_hashes){
 uint16_t recreate_original_payload(unsigned char* payload, uint16_t payload_len, struct ip* ip_hdr) {
     /* new_packet is already initialized */
     assert(ip_hdr->ip_p == DEDUP_MIXED);
-    memset(new_packet, 0, sizeof(unsigned char*) * MTU);
+    memset(new_packet, 0, sizeof(unsigned char) * MTU);
     /* packet is mixed content */
     /* iterate over it, read every 2B header and hash/unhash accordingly*/
     uint16_t new_packed_upto = 0, unpacked_upto = 0, shim_header = 0, chunk_length=0;
@@ -325,7 +325,7 @@ uint16_t recreate_original_payload(unsigned char* payload, uint16_t payload_len,
                 new_packed_upto +=
                     hash_memory[dedup_hash]->chunk_length;
             }
-        }else{
+        } else {
             /* it's a chunk in original text */
             /* calculated length from shim_header and read the chunk*/
             chunk_length = shim_header; 
@@ -349,6 +349,7 @@ void clear_payload_hash_list(list<chunk_hash *> *payload_hash_list) {
 
 /********************* downstream code *****************************/
 int dedup(struct nfq_data* buf, int *size, int flag) {
+    printf("In the function dedup\n");
     // extract the headers of the packet
     struct nfqnl_msg_packet_hdr *ph;
     ph = nfq_get_msg_packet_hdr(buf);
@@ -365,23 +366,28 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     uint32_t size_ip = 4 * ip_hdr->ip_hl;
 
     if (size_ip < 20) {
-        printlog(logfile, system_loglevel, LOG_CRITICAL, "* Invalid\
-                IP header length: %u bytes\n", size_ip);
+        printlog(logfile, system_loglevel, LOG_CRITICAL, "* Invalid"
+                "IP header length: %u bytes\n", size_ip);
+        *size = ntohs(ip_hdr->ip_len);
         return id;
     }
 
     if(ip_hdr->ip_p != IP_PROTO_TCP && ip_hdr->ip_p != DEDUP_CLEAR &&
         ip_hdr->ip_p != DEDUP_MIXED) {
-        printlog(logfile, system_loglevel, LOG_WARN, "Received a\
-                non TCP packet\n");
+        printlog(logfile, system_loglevel, LOG_WARN, "Received a"
+                "non TCP packet\n");
+        *size = ntohs(ip_hdr->ip_len);
         return id;
     }
 
-    // get to the IP payload
-    pkt_ptr += size_ip;
-    struct tcphdr *tcp_hdr = (struct tcphdr *)pkt_ptr;
-    unsigned char *payload = pkt_ptr + 4 * tcp_hdr->doff;
-    uint16_t payload_len = ntohs(ip_hdr->ip_len) - 4 * tcp_hdr->doff;
+    /* get to the IP payload */
+    struct tcphdr *tcp_hdr = (struct tcphdr *)(pkt_ptr + size_ip);
+    int size_tcp = 4 * tcp_hdr->doff;
+
+    /* get to the TCP payload */
+    unsigned char *payload = (unsigned char *)(pkt_ptr + size_ip +
+            size_tcp);
+    uint16_t payload_len = ntohs(ip_hdr->ip_len) - size_ip - size_tcp;
     list<chunk_hash *> *payload_hash_list = new list<chunk_hash *>;
     printlog(logfile, system_loglevel, LOG_DEBUG, "Payload length: %d\n", payload_len);
     connection connection_tuple(ip_hdr->ip_src.s_addr,
@@ -394,10 +400,12 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
                 payload, payload_len);
         update_hash_memory(current_oid, payload, payload_len);
         clear_payload_hash_list(payload_hash_list);
+        *size = ntohs(ip_hdr->ip_len);
         return id;
     } else if (ip_hdr->ip_p == DEDUP_CLEAR) {
         /* dedup base sending a packet which was not compressed */
         ip_hdr->ip_p = IP_PROTO_TCP;
+        *size = ntohs(ip_hdr->ip_len);
         ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
         uint32_t current_oid = update_flowlets(connection_tuple,
                 payload, payload_len);
@@ -426,7 +434,8 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         uint16_t original_payload_size = recreate_original_payload(payload,
                 payload_len, ip_hdr);
         ip_hdr->ip_p = IP_PROTO_TCP;
-        ip_hdr->ip_len = htons(original_payload_size);
+        *size = original_payload_size + size_ip + size_tcp;
+        ip_hdr->ip_len = htons(*size);
         ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
         memcpy(payload, new_packet, original_payload_size);
         uint32_t current_oid = update_flowlets(connection_tuple,
@@ -452,8 +461,9 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         delete advertise_hashes;
         delete past_flowlets;
     }
-    clear_payload_hash_list(payload_hash_list);
-    return id;
+    printlog(logfile, system_loglevel, LOG_CRITICAL, "We should not"
+            "be reaching here\n");
+    assert(false);
 }
 
 static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg, struct nfq_data *nfa, void *payload)
@@ -493,7 +503,7 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *, struct nf
         exit(1);
     }
 
-    printf("binding this socket to queue '0'\n");
+    printf("binding this socket to queue %d\n", queue_num);
     qh = nfq_create_queue(h,  queue_num, callback, NULL);
     if (!qh) {
         fprintf(stderr, "error during nfq_create_queue()\n");
@@ -505,7 +515,7 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *, struct nf
         fprintf(stderr, "can't set packet_copy mode\n");
         exit(1);
     }
-    printf("Packet Mode Set");
+    printf("Packet Mode Set\n");
     fd = nfq_fd(h);
 
     if(nfq_set_queue_maxlen(qh, 100) < 0 )

@@ -11,9 +11,10 @@ elif [ $1 == "m" ]; then
 elif [ $1 == "c" ]; then
     sudo iptables -F
 elif [ $1 == "lo" ]; then
-    #sudo iptables -A OUTPUT -p tcp -s 128.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 0
-    #sudo iptables -A INPUT -p 201 -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 1
-    sudo iptables -A INPUT -p tcp -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 1
+    sudo iptables -A OUTPUT -p tcp -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 0
+    sudo iptables -A INPUT -p 201 -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 1
+    sudo iptables -A INPUT -p 200 -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 1
+    #sudo iptables -A INPUT -p tcp -s 127.0.0.1 -d 127.0.0.1 -j NFQUEUE --queue-num 1
 fi
 
 sudo iptables -L -n

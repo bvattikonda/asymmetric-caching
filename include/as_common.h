@@ -23,7 +23,7 @@ extern "C" {
 #define MTU 1460
 #define TCP 6
 #define HASH_LEN  8
-#define MIN_CHUNK_LEN 2*HASH_LEN
+#define MIN_CHUNK_LEN (2 * HASH_LEN)
 #define MAX_MARKS (MTU / MIN_CHUNK_LEN)// cannot have more markers than the MTU
 
 #define HASH_HDR 0x8000

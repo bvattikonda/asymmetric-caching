@@ -1,6 +1,8 @@
 #include <as_common.h>
 
 uint16_t ip_header_checksum(const uint16_t *addr, register u_int len) { 
+    struct ip *ip_hdr = (struct ip *)((unsigned char *)addr);
+    ip_hdr->ip_sum = 0;
     int nleft = len; 
     const uint16_t *w = addr; 
     uint16_t answer = 0; 
