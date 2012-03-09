@@ -1,5 +1,7 @@
 #include "as_mobile.h"
 
+extern FILE *logfile;
+extern uint8_t system_loglevel;
 /*
  * @series: the byte sequence on which covar_matrix has to be run
  * @series_len: not used in this function, but denotes the size of

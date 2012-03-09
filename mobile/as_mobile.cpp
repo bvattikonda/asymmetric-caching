@@ -84,13 +84,15 @@ uint32_t update_flowlets(connection connection_tuple, unsigned char
             existing_packet->payload_len);
     joint_packet->payload_len = existing_packet->payload_len +
         payload_len;
-    memset(joint_packet->payload, 0, sizeof(payload_len +
-                existing_packet->payload_len));
+    memset(joint_packet->payload, 0, joint_packet->payload_len);
     memcpy(joint_packet->payload, existing_packet->payload,
             existing_packet->payload_len);
     memcpy(joint_packet->payload + existing_packet->payload_len,
             payload, payload_len);
 
+    printlog(logfile, system_loglevel, LOG_DEBUG, "Existing payload "
+            "length: %u, current payload length: %u\n",
+            existing_packet->payload_len, payload_len);
     bool boundary_present = detect_boundary(joint_packet,
             existing_packet->payload_len, payload_len); 
 
@@ -604,7 +606,7 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *, struct nf
 
     }
 
-    nfnl_rcvbufsiz(nfq_nfnlh(h), 1024 * 4096);
+    nfnl_rcvbufsiz(nfq_nfnlh(h), 2050 * 4096);
 
     for (;;) 
     {
