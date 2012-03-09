@@ -85,7 +85,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
             "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
 
     dump_data(logfile, system_loglevel, LOG_DEBUG, (unsigned char *)
-                pkt_ptr, ntohs(ip_hdr->ip_len));
+                pkt_ptr, 60);
 
     /* if payload length is <= MIN_CHUNK_LEN, just pass the packet as
      * it is */
@@ -101,6 +101,12 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     bool dedup_flag = false;
     uint16_t num_chunks = rabinFingerprints(store_marks, payload, payload_len, powers,
             MIN_CHUNK_LEN);
+    printlog(logfile, system_loglevel, LOG_DEBUG, "num_chunks: %d ", num_chunks);
+    for(i = 0; i < num_chunks; i++) {
+        printlog(logfile, system_loglevel, LOG_DEBUG, " %d ", store_marks[i]);
+    }
+    printlog(logfile, system_loglevel, LOG_DEBUG, "\n");
+
     uint32_t left = 0, right = 0;
 
     uint16_t chunk_length = 0, last_marker = 0, packed_upto = 0;
@@ -110,9 +116,10 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         left = 0, right = 0;
         hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
         printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-                "from %d to %d\n", last_marker, store_marks[i]);
+                " from %d to %d\n", last_marker, store_marks[i]);
         uint64_t hash_value = right + (((uint64_t)left)<<32);
         if(regular_cache.find(hash_value) != regular_cache.end()) {
+            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting regular hash %llx for chunk length  %d\n", hash_value, chunk_length);
             packed_upto += pack_hash_value(new_packet + packed_upto, left, right);
             dedup_flag = true;
             printlog(logfile, system_loglevel, LOG_DEBUG, "Normal hit: "
@@ -120,6 +127,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
             /* update length in the header */
         } else if (feedback_cache.find(hash_value) !=
                 feedback_cache.end()) {
+            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting feedback hash %llx for chunk length  %d\n", hash_value, chunk_length);
             packed_upto += pack_hash_value(new_packet + packed_upto, left, right);
             dedup_flag = true;
             printlog(logfile, system_loglevel, LOG_DEBUG, "Advert hit\
@@ -140,7 +148,12 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         regular_cache[hash_value] = current_timestamp;
         last_marker = store_marks[i];
     }
-    uint16_t chunked_upto = store_marks[num_chunks - 1];
+    uint16_t chunked_upto = 0;
+    if(num_chunks == 0) {
+        chunked_upto = 0;
+    } else {
+        chunked_upto = store_marks[num_chunks - 1];
+    }
     if(chunked_upto < payload_len - 1) {
         pack_buffer(uint16_t, new_packet, packed_upto, htons(payload_len -
                     chunked_upto));
@@ -180,7 +193,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "Final length parameters,"
             "ip_len: %d, size: %d\n", ntohs(ip_hdr->ip_len), *size);
     dump_data(logfile, system_loglevel, LOG_DEBUG, (unsigned char
-                *)pkt_ptr, *size);
+                *)pkt_ptr, 60);
     return id; 
 }
 
