@@ -134,6 +134,10 @@ void update_hashes(uint32_t current_oid, unsigned char *payload,
         printlog(logfile, system_loglevel, LOG_DEBUG,
                 "INSERT hash_value: %llx, chunk_length: %u\n",
                 hash_value, chunk_length);
+    } else {
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "EXISTS hash_value: %llx, chunk_length: %u\n",
+                hash_value, chunk_length);
     }
     hash_memory[hash_value]->timestamp = current_time;
     hash_memory[hash_value]->oid_set.insert(current_oid);
@@ -414,6 +418,8 @@ void clear_payload_hash_list(list<chunk_hash *> *payload_hash_list) {
 
 /********************* downstream code *****************************/
 int dedup(struct nfq_data* buf, int *size, int flag) {
+    printlog(logfile, system_loglevel, LOG_DEBUG, "******* Packet"
+            " received **********\n");
     // extract the headers of the packet
     struct nfqnl_msg_packet_hdr *ph;
     ph = nfq_get_msg_packet_hdr(buf);
@@ -455,8 +461,6 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "Length parameters,"
             "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
             "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
-    dump_data(logfile, system_loglevel, LOG_DEBUG, (unsigned char *)
-            pkt_ptr, 60);
     list<chunk_hash *> *payload_hash_list = new list<chunk_hash *>;
     connection connection_tuple(ip_hdr->ip_src.s_addr,
             ntohs(tcp_hdr->source),
@@ -514,6 +518,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
                 ntohs(ip_hdr->ip_len), *size);
         ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
         memcpy(payload, new_packet, original_payload_size);
+        payload_len = original_payload_size;
         uint32_t current_oid = update_flowlets(connection_tuple,
                 payload, payload_len);
         set<uint32_t> *past_flowlets = get_past_flowlets(current_oid,
