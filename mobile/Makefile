@@ -11,7 +11,7 @@ as_mobile : $(OBJECTS) $(UTIL_OBJECTS)
 	g++ $(CFLAGS) -o $@ $(OBJECTS) $(UTIL_OBJECTS) $(CLIBS)
 
 %.o : %.cpp
-	g++ $(CFLAGS) -c $< $(CLIBS) -I../include
+	g++ $(CFLAGS) -c $< -I../include
 
 clean :
 	rm -f *.o as_mobile
