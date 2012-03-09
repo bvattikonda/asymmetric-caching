@@ -9,7 +9,7 @@ map<uint32_t, object_information *> object_memory;
 ConnectionSeriesType connection_series; 
 OIDMap current_oid_map;
 uint32_t oid_count = 0;
-map<uint64_t,bool> *hashes_seen_already;
+map<uint64_t, bool> hashes_seen_already;
 
 map<uint32_t, map<uint32_t, uint32_t>* > hit_count;
 map<uint32_t, map<uint32_t, uint32_t>* > last_match;
@@ -41,6 +41,10 @@ void update_connection_series(connection connection_tuple, unsigned
     memset(packet->payload, 0, payload_len);
     memcpy(packet->payload, payload, payload_len);
     packet->payload_len = payload_len;
+    if(connection_series.find(connection_tuple) !=
+        connection_series.end()) {
+        delete connection_series[connection_tuple];
+    }
     connection_series[connection_tuple] = packet;
 }
 
@@ -90,6 +94,8 @@ uint32_t update_flowlets(connection connection_tuple, unsigned char
     bool boundary_present = detect_boundary(joint_packet,
             existing_packet->payload_len, payload_len); 
 
+    delete joint_packet;
+
     update_connection_series(connection_tuple, payload, payload_len);
     if(boundary_present) {
         update_object_memory(true, current_oid_map[connection_tuple],
@@ -107,6 +113,11 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
     uint16_t store_marks[MAX_MARKS];
     uint16_t num_chunks = rabinFingerprints(store_marks, payload,
             payload_len, powers, MIN_CHUNK_LEN);
+    printlog(logfile, system_loglevel, LOG_DEBUG, "num_chunks: %d ", num_chunks);
+    for(int i = 0; i < num_chunks; i++) {
+        printlog(logfile, system_loglevel, LOG_DEBUG, "%d ", store_marks[i]);
+    }
+    printlog(logfile, system_loglevel, LOG_DEBUG, "\n");
 
     /* create chunks based on these markers and hash them */
     uint32_t left = 0, right = 0;
@@ -117,8 +128,9 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
         chunk_length = store_marks[i] - last_marker; 
         left = 0, right = 0;
         hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
-        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-                "from %d to %d\n", last_marker, store_marks[i]);
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "update_hash_memory: Hashing chunk from %d to %d\n",
+                last_marker, store_marks[i]);
         hash_value = right + (((uint64_t)left)<<32);
         if(hash_memory.find(hash_value) == hash_memory.end()) {
             hash_information *chunk_information = new
@@ -130,6 +142,9 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
                     chunk_length);
             chunk_information->chunk_length = chunk_length;
             hash_memory[hash_value] = chunk_information;
+            printlog(logfile, system_loglevel, LOG_DEBUG,
+                    "INSERT hash_value: %llx, chunk_length: %u\n",
+                    hash_value, chunk_length);
         }
         hash_memory[hash_value]->timestamp = current_time;
         hash_memory[hash_value]->oid_set.insert(current_oid);
@@ -151,6 +166,12 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
     uint16_t num_chunks = rabinFingerprints(store_marks, payload,
             payload_len, powers, MIN_CHUNK_LEN);
 
+    printlog(logfile, system_loglevel, LOG_DEBUG, "num_chunks: %d ", num_chunks);
+    for(int i = 0; i < num_chunks; i++) {
+        printlog(logfile, system_loglevel, LOG_DEBUG, "%d ", store_marks[i]);
+    }
+    printlog(logfile, system_loglevel, LOG_DEBUG, "\n");
+
     /* create chunks based on these markers and hash them */
     uint32_t left = 0, right = 0;
     uint16_t chunk_length = 0, last_marker = 0;
@@ -160,8 +181,9 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
         chunk_length = store_marks[i] - last_marker; 
         left = 0, right = 0;
         hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
-        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk\
-                from %d to %d\n", last_marker, store_marks[i]);
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "get_past_flowlets: Hashing chunk from %d to %d\n",
+                last_marker, store_marks[i]);
         hash_value = right + (((uint64_t)left)<<32);
         if(hash_memory.find(hash_value) == hash_memory.end()) {
             hash_information *chunk_information = new
@@ -173,6 +195,9 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
                     chunk_length);
             chunk_information->chunk_length = chunk_length;
             hash_memory[hash_value] = chunk_information;
+            printlog(logfile, system_loglevel, LOG_DEBUG,
+                    "INSERT hash_value: %llx, chunk_length: %u\n",
+                    hash_value, chunk_length);
         } else {
             for(set<uint32_t>::iterator it =
                 hash_memory[hash_value]->oid_set.begin();
@@ -288,10 +313,15 @@ set<uint64_t> *generate_feedback(uint32_t current_oid, uint32_t best_oid) {
 }
 
 void optimize_feedback(set<uint64_t> *advertise_hashes){
-    for(set<uint64_t>::iterator optimize_it = advertise_hashes->begin(); optimize_it!= advertise_hashes->end();optimize_it++){
-        if(hashes_seen_already->find(*optimize_it) != hashes_seen_already->end()) {
+    for(set<uint64_t>::iterator optimize_it =
+        advertise_hashes->begin(); 
+        optimize_it!= advertise_hashes->end(); ){
+        if(hashes_seen_already.find(*optimize_it) != hashes_seen_already.end()) {
             /* hash already seen so remove it*/
-            advertise_hashes->erase(optimize_it);
+            advertise_hashes->erase(optimize_it++);
+        } else {
+            hashes_seen_already[*optimize_it] = true;
+            ++optimize_it;
         }
     }
     return;
@@ -304,21 +334,28 @@ uint16_t recreate_original_payload(unsigned char* payload, uint16_t payload_len,
     /* packet is mixed content */
     /* iterate over it, read every 2B header and hash/unhash accordingly*/
     uint16_t new_packed_upto = 0, unpacked_upto = 0, shim_header = 0, chunk_length=0;
+    uint32_t hash_left = 0, hash_right = 0;
     uint64_t dedup_hash = 0;
     while(unpacked_upto < payload_len) {
         shim_header = ntohs(unpack_buffer(uint16_t, payload,
                     unpacked_upto));
         unpacked_upto += 2;
         if((shim_header & HASH_HDR) == HASH_HDR){
-            dedup_hash = ntohs(unpack_buffer(uint64_t, payload,
+            hash_left = ntohl(unpack_buffer(uint32_t, payload,
                         unpacked_upto));
-            unpacked_upto += HASH_LEN;
+            unpacked_upto += 4;
+            hash_right = ntohl(unpack_buffer(uint32_t, payload,
+                        unpacked_upto));
+            unpacked_upto += 4;
+            dedup_hash = hash_right + (((uint64_t)hash_left)<<32);
             /* unhash this value */
             if(hash_memory.find(dedup_hash) == hash_memory.end()){
-                printlog(logfile, system_loglevel, LOG_CRITICAL, "*\
-                        HASH collision\n" );
+                printlog(logfile, system_loglevel, LOG_CRITICAL,
+                        "** Hash not present: %llx\n", dedup_hash);
                 continue;
             } else{
+                printlog(logfile, system_loglevel, LOG_CRITICAL,
+                        "** Hash hit: %llx\n", dedup_hash);
                 memcpy(new_packet + new_packed_upto,
                         hash_memory[dedup_hash]->chunk,
                         hash_memory[dedup_hash]->chunk_length);
@@ -349,7 +386,6 @@ void clear_payload_hash_list(list<chunk_hash *> *payload_hash_list) {
 
 /********************* downstream code *****************************/
 int dedup(struct nfq_data* buf, int *size, int flag) {
-    printf("In the function dedup\n");
     // extract the headers of the packet
     struct nfqnl_msg_packet_hdr *ph;
     ph = nfq_get_msg_packet_hdr(buf);
@@ -388,22 +424,29 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     unsigned char *payload = (unsigned char *)(pkt_ptr + size_ip +
             size_tcp);
     uint16_t payload_len = ntohs(ip_hdr->ip_len) - size_ip - size_tcp;
+    printlog(logfile, system_loglevel, LOG_DEBUG, "Length parameters,"
+            "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
+            "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
+    dump_data(logfile, system_loglevel, LOG_DEBUG, (unsigned char *)
+            pkt_ptr, 60);
     list<chunk_hash *> *payload_hash_list = new list<chunk_hash *>;
-    printlog(logfile, system_loglevel, LOG_DEBUG, "Payload length: %d\n", payload_len);
     connection connection_tuple(ip_hdr->ip_src.s_addr,
-        ntohs(tcp_hdr->source),
-        ip_hdr->ip_dst.s_addr,
-        ntohs(tcp_hdr->dest));
+            ntohs(tcp_hdr->source),
+            ip_hdr->ip_dst.s_addr,
+            ntohs(tcp_hdr->dest));
     if (ip_hdr->ip_p == IP_PROTO_TCP) {
         /* fresh packet coming from a non dedup base station */
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "Packet type: TCP packet\n");
         uint32_t current_oid = update_flowlets(connection_tuple,
                 payload, payload_len);
         update_hash_memory(current_oid, payload, payload_len);
         clear_payload_hash_list(payload_hash_list);
         *size = ntohs(ip_hdr->ip_len);
-        return id;
     } else if (ip_hdr->ip_p == DEDUP_CLEAR) {
         /* dedup base sending a packet which was not compressed */
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "Packet type: DEDUP_CLEAR\n");
         ip_hdr->ip_p = IP_PROTO_TCP;
         *size = ntohs(ip_hdr->ip_len);
         ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
@@ -431,11 +474,16 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         delete past_flowlets;
     } else if (ip_hdr->ip_p == DEDUP_MIXED) {
         /* dedup base sending a packet which was compressed */
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "Packet type: DEDUP_MIXED\n");
         uint16_t original_payload_size = recreate_original_payload(payload,
                 payload_len, ip_hdr);
         ip_hdr->ip_p = IP_PROTO_TCP;
         *size = original_payload_size + size_ip + size_tcp;
         ip_hdr->ip_len = htons(*size);
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "Final length parameters, ip_len: %d, size: %d\n",
+                ntohs(ip_hdr->ip_len), *size);
         ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
         memcpy(payload, new_packet, original_payload_size);
         uint32_t current_oid = update_flowlets(connection_tuple,
@@ -461,9 +509,8 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         delete advertise_hashes;
         delete past_flowlets;
     }
-    printlog(logfile, system_loglevel, LOG_CRITICAL, "We should not"
-            "be reaching here\n");
-    assert(false);
+    clear_payload_hash_list(payload_hash_list);
+    return id;
 }
 
 static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg, struct nfq_data *nfa, void *payload)
@@ -530,7 +577,6 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *, struct nf
     {
         if ((rv = recv(fd, buf, sizeof(buf), 0)) >= 0) 
         {
-            printf("pkt received\n");
             nfq_handle_packet(h, buf, rv);
             continue;
         }
