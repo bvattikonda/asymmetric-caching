@@ -37,6 +37,49 @@ uint16_t pack_hash_value(unsigned char *packet, uint32_t left, uint32_t right) {
     return bytes_packed;
 }
 
+uint16_t insert_hashes(uint16_t chunk_length, uint16_t packed_upto,
+        unsigned char *payload,
+        uint16_t last_marker,
+        bool *dedup_flag,
+        time_t current_timestamp) {
+    uint32_t left = 0, right = 0;
+    hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
+    printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
+            " from %d to %d\n", packed_upto, packed_upto +
+            chunk_length);
+    uint64_t hash_value = right + (((uint64_t)left)<<32);
+    uint16_t advance_by = 0;
+    if(regular_cache.find(hash_value) != regular_cache.end()) {
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Putting regular hash %llx for chunk length  %d\n", hash_value, chunk_length);
+        advance_by += pack_hash_value(new_packet + packed_upto, left, right);
+        *dedup_flag = true;
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Normal hit: "
+                "%.llx\n", (unsigned long long)hash_value);
+    } else if (feedback_cache.find(hash_value) !=
+            feedback_cache.end()) {
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Putting feedback hash %llx for chunk length  %d\n", hash_value, chunk_length);
+        advance_by += pack_hash_value(new_packet + packed_upto, left, right);
+        *dedup_flag = true;
+        printlog(logfile, system_loglevel, LOG_DEBUG, "Advert hit\
+                %.llx\n", (unsigned long long)hash_value);
+        feedback_cache.erase(hash_value);
+    } else {
+        /* fresh chunk */
+        printlog(logfile, system_loglevel, LOG_DEBUG, "New hash %llx for chunk length  %d\n", hash_value, chunk_length);
+        pack_buffer(uint16_t, new_packet, packed_upto, htons(chunk_length));
+        advance_by += 2;
+        packed_upto += 2;
+        memcpy(new_packet + packed_upto, payload + last_marker, chunk_length);
+        advance_by += chunk_length;
+        packed_upto += chunk_length;
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "chunk_length: %d\n", chunk_length);
+    }
+    /* add this chunk to the regular cache */
+    regular_cache[hash_value] = current_timestamp;
+    return advance_by;
+}
+
 /********************* downstream code *****************************/
 int dedup(struct nfq_data* buf, int *size, int flag) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "***** Packet "
@@ -104,46 +147,12 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
     }
     printlog(logfile, system_loglevel, LOG_DEBUG, "\n");
 
-    uint32_t left = 0, right = 0;
-    uint64_t hash_value = 0;
     uint16_t chunk_length = 0, last_marker = 0, packed_upto = 0;
     time_t current_timestamp = time(NULL);
     for(i=0; i < num_chunks; i++) {
         chunk_length = store_marks[i] - last_marker; 
-        left = 0, right = 0;
-        hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
-        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-                " from %d to %d\n", last_marker, store_marks[i]);
-        hash_value = right + (((uint64_t)left)<<32);
-        if(regular_cache.find(hash_value) != regular_cache.end()) {
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting regular hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            packed_upto += pack_hash_value(new_packet + packed_upto, left, right);
-            dedup_flag = true;
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Normal hit: "
-                    "%.llx\n", (unsigned long long)hash_value);
-            /* update length in the header */
-        } else if (feedback_cache.find(hash_value) !=
-                feedback_cache.end()) {
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting feedback hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            packed_upto += pack_hash_value(new_packet + packed_upto, left, right);
-            dedup_flag = true;
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Advert hit\
-                    %.llx\n", (unsigned long long)hash_value);
-            // remove from this cache
-            feedback_cache.erase(hash_value);
-            // insert in normal cache
-        } else {
-            /* fresh chunk */
-            printlog(logfile, system_loglevel, LOG_DEBUG, "New hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            pack_buffer(uint16_t, new_packet, packed_upto, htons(chunk_length));
-            packed_upto += 2;
-            memcpy(new_packet + packed_upto, payload + last_marker, chunk_length);
-            packed_upto += chunk_length;
-            printlog(logfile, system_loglevel, LOG_DEBUG,
-                    "chunk_length: %d\n", chunk_length);
-        }
-        /* add this chunk to the regular cache */
-        regular_cache[hash_value] = current_timestamp;
+        packed_upto += insert_hashes(chunk_length, packed_upto,
+                payload, last_marker, &dedup_flag, current_timestamp);
         last_marker = store_marks[i];
     }
     uint16_t chunked_upto = 0;
@@ -153,46 +162,9 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         chunked_upto = store_marks[num_chunks - 1];
     }
     if(chunked_upto < payload_len - 1) {
-        left = 0, right = 0;
         chunk_length = payload_len - chunked_upto;
-        hashlittle2((void*)(payload + chunked_upto), chunk_length, &right, &left);
-        printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-                " from %d to %d\n", chunked_upto, payload_len);
-        hash_value = right + (((uint64_t)left)<<32);
-        if(regular_cache.find(hash_value) != regular_cache.end()) {
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting regular hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            packed_upto += pack_hash_value(new_packet + chunked_upto, left, right);
-            dedup_flag = true;
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Normal hit: "
-                    "%.llx\n", (unsigned long long)hash_value);
-            /* update length in the header */
-        } else if (feedback_cache.find(hash_value) !=
-                feedback_cache.end()) {
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Putting feedback hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            packed_upto += pack_hash_value(new_packet + chunked_upto, left, right);
-            dedup_flag = true;
-            printlog(logfile, system_loglevel, LOG_DEBUG, "Advert hit\
-                    %.llx\n", (unsigned long long)hash_value);
-            // remove from this cache
-            feedback_cache.erase(hash_value);
-            // insert in normal cache
-        } else {
-            /* fresh chunk */
-            printlog(logfile, system_loglevel, LOG_DEBUG, "New hash %llx for chunk length  %d\n", hash_value, chunk_length);
-            pack_buffer(uint16_t, new_packet, chunked_upto, htons(chunk_length));
-            packed_upto += 2;
-            memcpy(new_packet + packed_upto, payload + last_marker, chunk_length);
-            packed_upto += chunk_length;
-            printlog(logfile, system_loglevel, LOG_DEBUG,
-                    "chunk_length: %d\n", chunk_length);
-        }
-        regular_cache[hash_value] = current_timestamp;
-        pack_buffer(uint16_t, new_packet, packed_upto, htons(payload_len -
-                    chunked_upto));
-        packed_upto += 2;
-        memcpy(new_packet + packed_upto, payload +
-                chunked_upto, payload_len - chunked_upto);
-        packed_upto += payload_len - chunked_upto;
+        packed_upto += insert_hashes(chunk_length, packed_upto,
+                payload, chunked_upto, &dedup_flag, current_timestamp);
     }
 
     /* if no text has been modified, send the packet as it is but set the
