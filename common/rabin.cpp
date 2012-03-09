@@ -42,11 +42,11 @@ uint16_t rabinFingerprints(uint16_t markers[], u_char* payload, int pay_len, lon
 {
     // returns the number of markers found in the packet, the actual marker locations are stored in 'markers' 
     uint16_t j = 0;
-    int result = 0,result_mod = 0,last_hit = 0, last_mark = 0, too_small = 0;
+    int result = 0,result_mod = 0, last_hit = 0, last_mark = 0, too_small = 0;
     int i = 0;
     for(i = 0; i < RABIN_WINDOW; i++)
     {
-        result += (int)payload[i] * expo(RABIN_PRIME,RABIN_WINDOW-1-i,RABIN_MOD);
+        result += (int)payload[i] * expo(RABIN_PRIME, RABIN_WINDOW-1-i,RABIN_MOD);
     }
 
     result_mod = result % RABIN_MOD;
@@ -60,8 +60,10 @@ uint16_t rabinFingerprints(uint16_t markers[], u_char* payload, int pay_len, lon
         result = result % RABIN_MOD;
         result += (int) payload[i] % RABIN_MOD;
         result_mod = result % RABIN_MOD;
-        if(!result_mod && ((i-last_hit) > min_len))
+        if(!result_mod && ((i-last_hit) > min_len)) {
             markers[j++] = i;
+            last_hit = i;
+        }
     }
     return j; 
 }
