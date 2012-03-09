@@ -164,6 +164,20 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
                 "update_hash_memory: Hashing chunk from %d to %d\n",
                 chunked_upto, payload_len);
         hash_value = right + (((uint64_t)left)<<32);
+        if(hash_memory.find(hash_value) == hash_memory.end()) {
+            hash_information *chunk_information = new
+                hash_information();
+            chunk_information->chunk = (unsigned
+                    char*)malloc(chunk_length);
+            memset(chunk_information->chunk, 0, chunk_length);
+            memcpy(chunk_information->chunk, payload + chunked_upto,
+                    chunk_length);
+            chunk_information->chunk_length = chunk_length;
+            hash_memory[hash_value] = chunk_information;
+            printlog(logfile, system_loglevel, LOG_DEBUG,
+                    "INSERT update_hash_memory hash_value: %llx, chunk_length: %u\n",
+                    hash_value, chunk_length);
+        }
         hash_memory[hash_value]->timestamp = current_time;
         hash_memory[hash_value]->oid_set.insert(current_oid);
         object_memory[current_oid]->hash_list.push_back(hash_value);
@@ -229,6 +243,45 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
         object_memory[current_oid]->hash_list.push_back(hash_value);
         payload_hash_list->push_back(new chunk_hash(hash_value,
                     chunk_length));
+    }
+    uint16_t chunked_upto = 0;
+    if(num_chunks == 0) {
+        chunked_upto = 0;
+    } else {
+        chunked_upto = store_marks[num_chunks - 1];
+    }
+    if(chunked_upto < payload_len - 1) {
+        chunk_length = payload_len - chunked_upto;
+        left = 0, right = 0;
+        hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
+        printlog(logfile, system_loglevel, LOG_DEBUG,
+                "get_past_flowlets: Hashing chunk from %d to %d\n",
+                chunked_upto, payload_len);
+        hash_value = right + (((uint64_t)left)<<32);
+        if(hash_memory.find(hash_value) == hash_memory.end()) {
+            hash_information *chunk_information = new
+                hash_information();
+            chunk_information->chunk = (unsigned
+                    char*)malloc(chunk_length);
+            memset(chunk_information->chunk, 0, chunk_length);
+            memcpy(chunk_information->chunk, payload + chunked_upto,
+                    chunk_length);
+            chunk_information->chunk_length = chunk_length;
+            hash_memory[hash_value] = chunk_information;
+            printlog(logfile, system_loglevel, LOG_DEBUG,
+                    "INSERT hash_value: %llx, chunk_length: %u\n",
+                    hash_value, chunk_length);
+        } else {
+            for(set<uint32_t>::iterator it =
+                hash_memory[hash_value]->oid_set.begin();
+                it != hash_memory[hash_value]->oid_set.end();
+                it++) {
+                past_flowlets->insert(*it);
+            }
+        }
+        hash_memory[hash_value]->timestamp = current_time;
+        hash_memory[hash_value]->oid_set.insert(current_oid);
+        object_memory[current_oid]->hash_list.push_back(hash_value);
     }
 
     /* store these hashes in the hash memory */
