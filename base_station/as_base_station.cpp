@@ -162,6 +162,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
         printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
                 " from %d to %d\n", chunked_upto, payload_len);
         hash_value = right + (((uint64_t)left)<<32);
+        printlog(logfile, system_loglevel, LOG_DEBUG, "New hash %llx for chunk length  %d\n", hash_value, chunk_length);
         regular_cache[hash_value] = current_timestamp;
         pack_buffer(uint16_t, new_packet, packed_upto, htons(payload_len -
                     chunked_upto));
