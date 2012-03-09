@@ -107,15 +107,14 @@ int read_advertisement(struct nfq_data* buf, int *size) {
         return id;
     }
 
-    /* get to the IP payload */
-    struct tcphdr *tcp_hdr;
-    if (ip_hdr->ip_p != ADVERT_PROT)
-    {
-        tcp_hdr = (struct tcphdr*)(pkt_ptr + size_ip); //data_udp is same as data_ip
-    } else {
+    if (ip_hdr->ip_p != ADVERT_PROT) {
         *size = ntohs(ip_hdr->ip_len);
         return id;
     }
+    
+    /* get to the IP payload */
+    struct tcphdr *tcp_hdr;
+    tcp_hdr = (struct tcphdr*)(pkt_ptr + size_ip); //data_udp is same as data_ip
     
     /* get to the TCP payload */
     int size_tcp = 4 * tcp_hdr->doff;
@@ -135,9 +134,12 @@ int read_advertisement(struct nfq_data* buf, int *size) {
         right = htonl(unpack_buffer(uint32_t, payload, i + 4));
         hash_value = (right + (((uint64_t)left)<<32));
         printlog(logfile, system_loglevel, LOG_DEBUG, 
-                "Received advertisement: %llu\n", hash_value);
+                "Received advertisement: %llx\n", hash_value);
         feedback_cache[hash_value] = current_timestamp;
     }
+
+    printlog(logfile, system_loglevel, LOG_DEBUG, 
+            "Processed advertisement\n");
 
     ip_hdr->ip_p = IP_PROTO_TCP;
     ip_hdr->ip_len = htons(size_ip + size_tcp);
