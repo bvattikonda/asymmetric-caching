@@ -60,7 +60,7 @@ uint16_t rabinFingerprints(uint16_t markers[], u_char* payload, int pay_len, lon
         result = result % RABIN_MOD;
         result += (int) payload[i] % RABIN_MOD;
         result_mod = result % RABIN_MOD;
-        if(!result_mod && (i-last_hit) > min_len)
+        if(!result_mod && ((i-last_hit) > min_len))
             markers[j++] = i;
     }
     return j; 
