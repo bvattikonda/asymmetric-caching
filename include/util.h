@@ -5,6 +5,7 @@
 #include <inttypes.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/select.h>
 #include <netinet/tcp.h>
 #include <stdint.h>
 #include <execinfo.h>

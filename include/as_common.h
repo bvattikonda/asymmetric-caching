@@ -15,7 +15,10 @@ extern "C" {
 #include <lookup3.h>
 
 #define DOWN_BASE_STATION_QUEUE 0
-#define DOWN_MOBILE_QUEUE 1
+#define UP_BASE_STATION_QUEUE 1
+
+#define DOWN_MOBILE_QUEUE 2
+#define UP_MOBILE_QUEUE 3
 
 #define ETHER_TYPE_IP (0x0800)
 #define IP_PROTO_TCP (6)
@@ -30,6 +33,7 @@ extern "C" {
 
 #define DEDUP_CLEAR 200
 #define DEDUP_MIXED 201
+#define ADVERT_PROT 202
 
 using namespace std;
 using namespace techsoft;

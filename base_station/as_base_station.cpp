@@ -80,8 +80,75 @@ uint16_t insert_hashes(uint16_t chunk_length, uint16_t packed_upto,
     return advance_by;
 }
 
+int read_advertisement(struct nfq_data* buf, int *size) {
+    printlog(logfile, system_loglevel, LOG_DEBUG, "*** Advertisement"
+            "received **************\n");
+    int i=0;
+    // extract the headers of the packet
+    struct nfqnl_msg_packet_hdr *ph;
+    ph = nfq_get_msg_packet_hdr(buf);
+    int id = ntohl(ph->packet_id);
+
+    u_char *pkt_ptr;
+    int buf_len = nfq_get_payload(buf, (char **)&pkt_ptr); //get the packet data.
+    if(buf_len == -1) {
+        printlog(logfile, system_loglevel, LOG_CRITICAL, "Failed to\
+                read the packet from netfilter queue\n");
+        return 0;
+    }
+    
+    struct ip *ip_hdr = (struct ip *)pkt_ptr;
+
+    uint32_t size_ip = 4 * ip_hdr->ip_hl;
+
+    if (size_ip < 20) {
+        printf("* Invalid IP header length: %u bytes\n", size_ip);
+        *size = ntohs(ip_hdr->ip_len);
+        return id;
+    }
+
+    /* get to the IP payload */
+    struct tcphdr *tcp_hdr;
+    if (ip_hdr->ip_p != ADVERT_PROT)
+    {
+        tcp_hdr = (struct tcphdr*)(pkt_ptr + size_ip); //data_udp is same as data_ip
+    } else {
+        *size = ntohs(ip_hdr->ip_len);
+        return id;
+    }
+    
+    /* get to the TCP payload */
+    int size_tcp = 4 * tcp_hdr->doff;
+    u_char* payload = (unsigned char *)(pkt_ptr + size_ip + size_tcp);
+
+    uint16_t payload_len = ntohs(ip_hdr->ip_len) - size_ip - size_tcp; // length in IP header minus the header length of TCP 
+    printlog(logfile, system_loglevel, LOG_DEBUG, "Length parameters,"
+            "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
+            "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
+    assert(payload_len % 8 == 0);
+    
+    uint32_t left = 0, right = 0;
+    uint64_t hash_value = 0;
+    time_t current_timestamp = time(NULL);
+    for(int i = 0; i < payload_len; i += 8) {
+        left = htonl(unpack_buffer(uint32_t, payload, i));
+        right = htonl(unpack_buffer(uint32_t, payload, i + 4));
+        hash_value = (right + (((uint64_t)left)<<32));
+        printlog(logfile, system_loglevel, LOG_DEBUG, 
+                "Received advertisement: %llu\n", hash_value);
+        feedback_cache[hash_value] = current_timestamp;
+    }
+
+    ip_hdr->ip_p = IP_PROTO_TCP;
+    ip_hdr->ip_len = htons(size_ip + size_tcp);
+    ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr,
+            sizeof(struct ip));
+    *size = size_ip + size_tcp;
+    return id;
+}
+
 /********************* downstream code *****************************/
-int dedup(struct nfq_data* buf, int *size, int flag) {
+int dedup(struct nfq_data* buf, int *size) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "***** Packet "
             "received **************\n");
     int i=0;
@@ -203,42 +270,31 @@ static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,
         struct nfq_data *nfa, void *payload) {
     char *send_data;
     int i, newSize;
-    u_int32_t id = dedup(nfa, &newSize,1);
+    u_int32_t id = dedup(nfa, &newSize);
     printlog(logfile, system_loglevel, LOG_DEBUG, "ID of the packet"
             "to be sent out %u\n", id);
     i = nfq_get_payload(nfa, &send_data);
     return nfq_set_verdict(qh, id, NF_ACCEPT, newSize, (unsigned char *)send_data);
 }
 
-void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *,
-            struct nfgenmsg *, struct nfq_data *, void *)) {
+static int cbUp(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,
+        struct nfq_data *nfa, void *payload) {
+    char *send_data;
+    int i = 0, newSize = 0;
+    u_int32_t id = read_advertisement(nfa, &newSize);
+    i = nfq_get_payload(nfa, &send_data);
+    return nfq_set_verdict(qh, id, NF_ACCEPT, newSize, (unsigned char *)send_data);
+}
+
+int createQueue(struct nfq_handle *h, int queue_num, int
+        (*callback)(struct nfq_q_handle *, struct nfgenmsg *, struct nfq_data
+            *, void *)) {
     // get code from nfqnl_test.c
-    struct nfq_handle *h;
     struct nfq_q_handle *qh;
     int fd = 0;
     int rv = 0;
-    char buf[4096] __attribute__ ((aligned));
 
-    printf("opening library handle\n");
-    h = nfq_open();
-    if (!h) {
-        fprintf(stderr, "error during nfq_open()\n");
-        exit(1);
-    }
-
-    printf("unbinding existing nf_queue handler for AF_INET (if any)\n");
-    if (nfq_unbind_pf(h, AF_INET) < 0) {
-        fprintf(stderr, "error during nfq_unbind_pf()\n");
-        //exit(1);
-    }
-
-    printf("binding nfnetlink_queue as nf_queue handler for AF_INET\n");
-    if (nfq_bind_pf(h, AF_INET) < 0) {
-        fprintf(stderr, "error during nfq_bind_pf()\n");
-        exit(1);
-    }
-
-    printf("binding this socket to queue '0'\n");
+    printf("binding this socket to queue %d\n", queue_num);
     qh = nfq_create_queue(h,  queue_num, callback, NULL);
     if (!qh) {
         fprintf(stderr, "error during nfq_create_queue()\n");
@@ -256,56 +312,34 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *,
     if(nfq_set_queue_maxlen(qh, 100) < 0 )
     {
         fprintf(stderr,"---\nCannot set queue max len \n---");
-
     }
 
-    nfnl_rcvbufsiz(nfq_nfnlh(h), 1024 * 4096);
-
-    for (;;) 
-    {
-        if ((rv = recv(fd, buf, sizeof(buf), 0)) >= 0) 
-        {
-            nfq_handle_packet(h, buf, rv);
-            continue;
-        }
-        /* if your application is too slow to digest the packets that
-         * are sent from kernel-space, the socket buffer that we use
-         * to enqueue packets may fill up returning ENOBUFS. Depending
-         * on your application, this error may be ignored. Please, see
-         * the doxygen documentation of this library on how to improve
-         * this situation.
-         */
-        if (rv < 0 && errno == ENOBUFS) {
-            printf("losing packets!\n");
-            continue;
-        }
-        perror("recv failed");
-        break;
-    }
-
-    printf("unbinding from queue 0\n");
-    nfq_destroy_queue(qh);
-
-#ifdef INSANE
-    /* normally, applications SHOULD NOT issue this command, since
-     * it detaches other programs/sockets from AF_INET, too ! */
-    printf("unbinding from AF_INET\n");
-    nfq_unbind_pf(h, AF_INET);
-#endif
-
-    printf("closing library handle\n");
-    nfq_close(h);
-
-    return;
+    return fd;
 }
 
-void downstreamDedup()
-{
-    // create the global data structures
-    // create an NF queue to get packets, tie this to queue 0
-    initializeRabin(powers);
-    createQueue(DOWN_BASE_STATION_QUEUE, &cbDown);
-    return;
+struct nfq_handle *get_handle() {
+    struct nfq_handle *h;
+
+    printf("opening library handle\n");
+    h = nfq_open();
+    if (!h) {
+        fprintf(stderr, "error during nfq_open()\n");
+        exit(1);
+    }
+
+    printf("unbinding existing nf_queue handler for AF_INET (if any)\n");
+    if (nfq_unbind_pf(h, AF_INET) < 0) {
+        fprintf(stderr, "error during nfq_unbind_pf()\n");
+        exit(1);
+    }
+
+    printf("binding nfnetlink_queue as nf_queue handler for AF_INET\n");
+    if (nfq_bind_pf(h, AF_INET) < 0) {
+        fprintf(stderr, "error during nfq_bind_pf()\n");
+        exit(1);
+    }
+
+    return h;
 }
 
 /************************* main *******************************/
@@ -315,8 +349,52 @@ int main() {
         printf("Malloc failed\n");
         exit(EXIT_FAILURE);
     }
-    downstreamDedup();
+
+    struct nfq_handle *h = get_handle();
+    fd_set rfds;
+
     // start the downstream code, later move to a thread
+    initializeRabin(powers);
+    int max_fd = 0;
+    int down_fd = createQueue(h, DOWN_BASE_STATION_QUEUE, &cbDown);
+    if(down_fd > max_fd)
+        max_fd = down_fd;
+    int up_fd = createQueue(h, UP_BASE_STATION_QUEUE, &cbUp);
+    if(up_fd > max_fd)
+        max_fd = up_fd;
+
+    int n = 0, rv = 0;
+    char buf[4096] __attribute__ ((aligned));
+    while(true) {
+        FD_ZERO(&rfds);
+        FD_SET(down_fd, &rfds);
+        FD_SET(up_fd, &rfds);
+        n = select(max_fd + 1, &rfds, NULL, NULL, NULL);
+        if(n == -1) {
+            printlog(logfile, system_loglevel, LOG_CRITICAL, 
+                    "Select returned error: %s\n", strerror(errno));
+        } 
+        if(FD_ISSET(down_fd, &rfds)) {
+            rv = recv(down_fd, buf, sizeof(buf), 0);
+            if(rv < 0) {
+                printlog(logfile, system_loglevel, LOG_CRITICAL, 
+                        "recv call failed: %s\n", strerror(errno));
+            } else {
+                nfq_handle_packet(h, buf, rv);
+            }
+        } 
+        if(FD_ISSET(up_fd, &rfds)) {
+            rv = recv(up_fd, buf, sizeof(buf), 0);
+            if(rv < 0) {
+                printlog(logfile, system_loglevel, LOG_CRITICAL, 
+                        "recv call failed: %s\n", strerror(errno));
+            } else {
+                nfq_handle_packet(h, buf, rv);
+            }
+        }
+    }
+
+    nfnl_rcvbufsiz(nfq_nfnlh(h), 2050 * 4096);
     // start the upstream code, later move to a thread
     return 0;
 }
