@@ -17,7 +17,7 @@ map<uint32_t, map<uint32_t, uint32_t>* > last_match;
 map<uint32_t, map<uint32_t, uint32_t>* > last_advertised;
 
 FILE *logfile = fopen("as_mobile.log", "w");
-uint8_t system_loglevel = LOG_DEBUG;
+uint8_t system_loglevel = LOG_CRITICAL;
 
 /********************* cache management ***************************/
 
@@ -712,6 +712,10 @@ int main() {
     int up_fd = createQueue(h, UP_MOBILE_QUEUE, &cbUp);
     if(up_fd > max_fd)
         max_fd = up_fd;
+
+    printlog(logfile, system_loglevel, LOG_DEBUG, 
+            "Queue packet descriptors, down_fd: %d, up_fd: %d\n",
+            down_fd, up_fd);
 
     int n = 0, rv = 0;
     char buf[4096] __attribute__ ((aligned));

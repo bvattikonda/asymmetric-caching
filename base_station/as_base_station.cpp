@@ -8,7 +8,7 @@ map<uint64_t, time_t> regular_cache; //indexes the timestamp of each hash
 map<uint64_t, time_t> feedback_cache;
 
 FILE *logfile = fopen("as_base_station.log", "w");
-uint8_t system_loglevel = LOG_DEBUG;
+uint8_t system_loglevel = LOG_CRITICAL;
 
 /********************* cache management ***************************/
 
@@ -82,7 +82,7 @@ uint16_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,
 }
 
 int read_advertisement(struct nfq_data* buf, int *size) {
-    printlog(logfile, system_loglevel, LOG_DEBUG, "*** Advertisement"
+    printlog(logfile, system_loglevel, LOG_DEBUG, "*** Advertisement "
             "received **************\n");
     int i=0;
     // extract the headers of the packet
