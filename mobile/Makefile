@@ -1,4 +1,4 @@
-CFLAGS = -g 
+CFLAGS = -g
 CLIBS = -lrt -lnfnetlink -lnetfilter_queue
 
 all: as_mobile 
