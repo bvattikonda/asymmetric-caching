@@ -2,3 +2,5 @@
 *.swp
 *.log
 *.py
+as_base_station
+as_mobile
