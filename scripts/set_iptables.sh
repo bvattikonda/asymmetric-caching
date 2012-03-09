@@ -10,7 +10,7 @@ if [ $1 == "bs" ]; then
 elif [ $1 == "m" ]; then
     sudo iptables -A INPUT -p 201 -s 10.0.0.1 -d 10.0.0.2 -j NFQUEUE --queue-num 2
     sudo iptables -A INPUT -p 200 -s 10.0.0.1 -d 10.0.0.2 -j NFQUEUE --queue-num 2
-    sudo iptables -A OUTPUT -p 202 -s 10.0.0.2 -d 10.0.0.1 -j NFQUEUE --queue-num 3
+    sudo iptables -A OUTPUT -p tcp -s 10.0.0.2 -d 10.0.0.1 -j NFQUEUE --queue-num 3
 elif [ $1 == "c" ]; then
     sudo iptables -F
 elif [ $1 == "lo" ]; then
