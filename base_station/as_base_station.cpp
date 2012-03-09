@@ -137,6 +137,7 @@ int dedup(struct nfq_data* buf, int *size, int flag) {
             // insert in normal cache
         } else {
             /* fresh chunk */
+            printlog(logfile, system_loglevel, LOG_DEBUG, "New hash %llx for chunk length  %d\n", hash_value, chunk_length);
             pack_buffer(uint16_t, new_packet, packed_upto, htons(chunk_length));
             packed_upto += 2;
             memcpy(new_packet + packed_upto, payload + last_marker, chunk_length);
@@ -263,7 +264,6 @@ void createQueue(int queue_num, int (*callback)(struct nfq_q_handle *,
     {
         if ((rv = recv(fd, buf, sizeof(buf), 0)) >= 0) 
         {
-            printf("pkt received\n");
             nfq_handle_packet(h, buf, rv);
             continue;
         }
