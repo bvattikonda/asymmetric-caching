@@ -10,6 +10,10 @@ map<uint64_t, time_t> feedback_cache;
 FILE *logfile = fopen("as_base_station.log", "w");
 uint8_t system_loglevel = LOG_CRITICAL;
 
+uint32_t actual_traffic = 0;
+uint32_t dedup_traffic = 0;
+uint32_t feedback_bytes = 0;
+
 /********************* cache management ***************************/
 
 /********************* upstream code *****************************/
@@ -126,7 +130,10 @@ int read_advertisement(struct nfq_data* buf, int *size) {
             "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
             "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
     assert(payload_len % 8 == 0);
-    
+   
+    feedback_bytes += payload_len;
+    printlog(logfile, system_loglevel, LOG_CRITICAL, "Feedback bytes received so far %d\n", feedback_bytes);
+
     uint32_t left = 0, right = 0;
     uint64_t hash_value = 0;
     time_t current_timestamp = time(NULL);
@@ -204,7 +211,10 @@ int dedup(struct nfq_data* buf, int *size) {
         return id;
     }
 
-    // if payload length > HASH_LEN
+    // if payload length > MIN_CHUNK_LEN
+    actual_traffic += payload_len;
+    printlog(logfile, system_loglevel, LOG_CRITICAL, "Actual traffic so far %d\n", actual_traffic);
+
     // get markers for rabin fingerprinting
     uint16_t store_marks[MAX_MARKS];
     memset(new_packet, 0, sizeof(unsigned char) * MAX_PACKET_LEN);
@@ -266,6 +276,9 @@ int dedup(struct nfq_data* buf, int *size) {
     /* set IP options so that mobile knows that it needs to generate feedback
      * for this compute the IP checksum
     */
+
+    dedup_traffic += packed_upto;
+    printlog(logfile, system_loglevel, LOG_CRITICAL, "Dedup traffic so far %d\n", dedup_traffic);
 
     ip_hdr->ip_len = htons(size_ip + size_tcp + packed_upto);
     ip_hdr->ip_sum = ip_header_checksum((uint16_t *)ip_hdr, sizeof(struct ip));
