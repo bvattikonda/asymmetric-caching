@@ -1,0 +1,10 @@
+==============
+ Base-station
+==============
+- Run baseline dedup hashing, caching and using it for downstream traffic 
+- Run precog ranking algorithm, maintaining trees, etc
+
+==============
+    Mobile
+==============
+- Run baseline dedup unhashing and 
