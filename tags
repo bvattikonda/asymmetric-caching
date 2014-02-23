@@ -1,0 +1,561 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADVERTISE_COUNT	mobile/as_mobile.h	8;"	d
+ADVERT_PROT	include/as_common.h	36;"	d
+ARORDER	mobile/as_mobile.h	3;"	d
+AllocType	include/matrix2.hxx	/^   enum AllocType { Allocate, Free, Record };$/;"	g	class:techsoft::matrix
+Allocate	include/matrix2.hxx	/^   enum AllocType { Allocate, Free, Record };$/;"	e	enum:techsoft::matrix::AllocType
+CFLAGS	base_station/Makefile	/^CFLAGS = -g$/;"	m
+CFLAGS	common/Makefile	/^CFLAGS = -g$/;"	m
+CFLAGS	mobile/Makefile	/^CFLAGS = -g$/;"	m
+CLIBS	base_station/Makefile	/^CLIBS = -lrt -lnfnetlink -lnetfilter_queue $/;"	m
+CLIBS	common/Makefile	/^CLIBS = -lrt $/;"	m
+CLIBS	mobile/Makefile	/^CLIBS = -lrt -lnfnetlink -lnetfilter_queue$/;"	m
+C_ARRAY	include/matrix2.hxx	/^enum MatArrayType { C_ARRAY, FORTRAN_ARRAY };$/;"	e	enum:techsoft::MatArrayType
+Cmat_iter	include/matrix2.hxx	/^   Cmat_iter (const matrix<T>& mm, const slice& ss) : m(mm), s(ss) {;}$/;"	f	class:techsoft::Cmat_iter
+Cmat_iter	include/matrix2.hxx	/^   Cmat_iter(const Cmat_iter& mi) : m(mi.m), s(mi.s) {;}$/;"	f	class:techsoft::Cmat_iter
+Cmat_iter	include/matrix2.hxx	/^class Cmat_iter$/;"	c	namespace:techsoft
+ConnectionSeriesType	mobile/as_mobile.h	/^typedef map<connection, flow_packet *> ConnectionSeriesType;$/;"	t
+DEBUG	base_station/as_base_station.h	8;"	d
+DEDUP_CLEAR	include/as_common.h	34;"	d
+DEDUP_MIXED	include/as_common.h	35;"	d
+DIAGONAL	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	e	enum:techsoft::MATIRX_TYPE
+DOWN_BASE_STATION_QUEUE	include/as_common.h	17;"	d
+DOWN_MOBILE_QUEUE	include/as_common.h	20;"	d
+DTHRESH	mobile/as_mobile.h	4;"	d
+ETHER_TYPE_IP	include/as_common.h	23;"	d
+Employees	base_station/sample_map.cpp	/^map<int, map<int , mapid > > Employees;$/;"	v
+FALSE	include/util.h	47;"	d
+FORTRAN_ARRAY	include/matrix2.hxx	/^enum MatArrayType { C_ARRAY, FORTRAN_ARRAY };$/;"	e	enum:techsoft::MatArrayType
+Free	include/matrix2.hxx	/^   enum AllocType { Allocate, Free, Record };$/;"	e	enum:techsoft::matrix::AllocType
+GENERAL	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	e	enum:techsoft::MATIRX_TYPE
+HASH_BIG_ENDIAN	include/lookup3.h	55;"	d
+HASH_BIG_ENDIAN	include/lookup3.h	60;"	d
+HASH_BIG_ENDIAN	include/lookup3.h	63;"	d
+HASH_HDR	include/as_common.h	32;"	d
+HASH_LEN	include/as_common.h	28;"	d
+HASH_LITTLE_ENDIAN	include/lookup3.h	54;"	d
+HASH_LITTLE_ENDIAN	include/lookup3.h	59;"	d
+HASH_LITTLE_ENDIAN	include/lookup3.h	62;"	d
+HashInformation	mobile/object_based_feedback-26.py	/^class HashInformation:$/;"	c
+IP_OPT_MIXED	base_station/as_base_station.h	5;"	d
+IP_OPT_ORIGINAL	base_station/as_base_station.h	4;"	d
+IP_PROTO_TCP	include/as_common.h	24;"	d
+IP_PROTO_UDP	include/as_common.h	25;"	d
+LOG_CRITICAL	include/logging.h	13;"	d
+LOG_DEBUG	include/logging.h	15;"	d
+LOG_WARN	include/logging.h	14;"	d
+LTRIANG	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	e	enum:techsoft::MATIRX_TYPE
+MATCH_THRESHOLD	mobile/as_mobile.h	7;"	d
+MATIRX_TYPE	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	g	namespace:techsoft
+MATRIX_COL_SEP	include/matrix.cc	3509;"	d	file:
+MATRIX_ROW_SEP	include/matrix.cc	3505;"	d	file:
+MAX_CHUNK_SIZE	base_station/as_base_station.h	6;"	d
+MAX_MARKS	include/as_common.h	30;"	d
+MAX_PACKET_LEN	base_station/as_base_station.h	7;"	d
+MIN_CHUNK_LEN	include/as_common.h	29;"	d
+MTU	include/as_common.h	26;"	d
+MType_	include/matrix2.hxx	/^   MATIRX_TYPE MType_;$/;"	m	class:techsoft::gmslice
+MatArrayType	include/matrix2.hxx	/^enum MatArrayType { C_ARRAY, FORTRAN_ARRAY };$/;"	g	namespace:techsoft
+Mat_iter	include/matrix2.hxx	/^   Mat_iter (matrix<T>& mm, const slice& ss) : m(mm), s(ss) {;}$/;"	f	class:techsoft::Mat_iter
+Mat_iter	include/matrix2.hxx	/^   Mat_iter(const Mat_iter& mi) : m(mi.m), s(mi.s) {;}$/;"	f	class:techsoft::Mat_iter
+Mat_iter	include/matrix2.hxx	/^class Mat_iter$/;"	c	namespace:techsoft
+Mref	include/matrix2.hxx	/^   Mref (const Mref& mr) : m(mr.m), i(mr.i) {;}$/;"	f	class:techsoft::Mref
+Mref	include/matrix2.hxx	/^   Mref (matrix<T>& mm, size_t ii) : m(mm), i(ii) {;}$/;"	f	class:techsoft::Mref
+Mref	include/matrix2.hxx	/^class Mref$/;"	c	namespace:techsoft
+NSECS_PER_SEC	include/util.h	49;"	d
+NSECS_PER_USEC	include/util.h	50;"	d
+OBJECTS	base_station/Makefile	/^OBJECTS = as_base_station.o$/;"	m
+OBJECTS	common/Makefile	/^OBJECTS = lookup3.o util.o rabin.o as_common.o$/;"	m
+OBJECTS	mobile/Makefile	/^OBJECTS = as_mobile.o detect_boundary.o best_matched_flowlet.o$/;"	m
+OIDMap	mobile/as_mobile.h	/^typedef map<connection, uint32_t> OIDMap;$/;"	t
+ObjectInformation	mobile/object_based_feedback-26.py	/^class ObjectInformation:$/;"	c
+RABIN_MOD	include/rabin.h	10;"	d
+RABIN_PRIME	include/rabin.h	9;"	d
+RABIN_WINDOW	include/rabin.h	11;"	d
+Record	include/matrix2.hxx	/^   enum AllocType { Allocate, Free, Record };$/;"	e	enum:techsoft::matrix::AllocType
+SELF_TEST	include/lookup3.h	36;"	d
+TCP	include/as_common.h	27;"	d
+TRIDIAGONAL	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	e	enum:techsoft::MATIRX_TYPE
+TRUE	include/util.h	46;"	d
+UP_BASE_STATION_QUEUE	include/as_common.h	18;"	d
+UP_MOBILE_QUEUE	include/as_common.h	21;"	d
+USECS_PER_SEC	include/util.h	48;"	d
+UTIL_OBJECTS	base_station/Makefile	/^UTIL_OBJECTS = ..\/common\/util.o ..\/common\/rabin.o ..\/common\/lookup3.o\\$/;"	m
+UTIL_OBJECTS	mobile/Makefile	/^UTIL_OBJECTS = ..\/common\/util.o ..\/common\/rabin.o ..\/common\/lookup3.o\\$/;"	m
+UTRIANG	include/matrix2.hxx	/^enum MATIRX_TYPE { GENERAL, DIAGONAL, TRIDIAGONAL, UTRIANG, LTRIANG };$/;"	e	enum:techsoft::MATIRX_TYPE
+WINDOW_FACTOR	mobile/as_mobile.h	6;"	d
+_AS_COMMON_	include/as_common.h	2;"	d
+_LOGGING_H_	include/logging.h	4;"	d
+_MATRIX_CC_12a08ba0_8940_11d3_910c_002018382069_INCLUDED	include/matrix.cc	8;"	d	file:
+_MATRIX_H_12a08ba0_8940_11d3_910c_002018382069_INCLUDED	include/matrix2.hxx	8;"	d
+_UTIL_	include/util.h	2;"	d
+__STDC_FORMAT_MACROS	include/util.h	4;"	d
+__init__	mobile/object_based_feedback-26.py	/^    def __init__(self):$/;"	m	class:ObjectInformation
+__init__	mobile/object_based_feedback-26.py	/^    def __init__(self, oid, clen = 0):$/;"	m	class:HashInformation
+abs	include/matrix.cc	/^abs (const matrix<T>& m)$/;"	f	namespace:techsoft
+abs	include/matrix.cc	/^inline double abs (double v) { return fabs( v); }$/;"	f	namespace:techsoft
+abs	include/matrix.cc	/^inline float abs (float v) { return (float)fabs( v); }$/;"	f	namespace:techsoft
+abs	include/matrix.cc	/^inline long double abs (long double v) { return fabsl( v); }$/;"	f	namespace:techsoft
+actual_traffic	base_station/as_base_station.cpp	/^uint32_t actual_traffic = 0;$/;"	v
+addNewObject	mobile/object_based_feedback-26.py	/^def addNewObject(conn_tuple):$/;"	f
+adj	include/matrix.cc	/^matrix<T>::adj () const$/;"	f	class:techsoft::matrix
+advertiseHashes	mobile/object_based_feedback-26.py	/^def advertiseHashes(ongoing_object,best_object, ts):$/;"	f
+advertise_hashes	mobile/as_mobile.cpp	/^set<uint64_t> advertise_hashes;$/;"	v
+allocator	include/matrix.cc	/^matrix<T>::allocator (AllocType bOpt, size_t nrow, size_t ncol)$/;"	f	class:techsoft::matrix
+am_big_endian	common/util.cpp	/^int am_big_endian(void){$/;"	f
+apCheckAndMakeMemory	mobile/object_based_feedback-26.py	/^def apCheckAndMakeMemory(ap_memory, ap_mem_size):$/;"	f
+apHitStats	mobile/object_based_feedback-26.py	/^def apHitStats(new_hashes, ts):$/;"	f
+apMemoryInsert	mobile/object_based_feedback-26.py	/^def apMemoryInsert(hash_list, ts):$/;"	f
+apply	include/matrix.cc	/^matrix<T>::apply (T (*fn)(T)) const$/;"	f	class:techsoft::matrix
+apply	include/matrix.cc	/^matrix<T>::apply (T (*fn)(const T&)) const$/;"	f	class:techsoft::matrix
+apply	include/matrix.cc	/^matrix<T>::apply (T (*fn)(size_t,size_t,T)) const$/;"	f	class:techsoft::matrix
+apply	include/matrix.cc	/^matrix<T>::apply (T (*fn)(size_t,size_t,const T&)) const$/;"	f	class:techsoft::matrix
+array_type	include/matrix2.hxx	/^   typedef valarray<T> array_type;$/;"	t	class:techsoft::matrix
+balanc	include/matrix.cc	/^matrix<T>::balanc (matrix<T>& v, bool eivec) $/;"	f	class:techsoft::matrix
+base_mat	include/matrix2.hxx	/^      base_mat (const T& v, size_t row, size_t col)$/;"	f	struct:techsoft::matrix::base_mat
+base_mat	include/matrix2.hxx	/^      base_mat (const T* v, size_t row, size_t col)$/;"	f	struct:techsoft::matrix::base_mat
+base_mat	include/matrix2.hxx	/^      base_mat (size_t row, size_t col)$/;"	f	struct:techsoft::matrix::base_mat
+base_mat	include/matrix2.hxx	/^      base_mat (size_t row, size_t col, const valarray<T>& v)$/;"	f	struct:techsoft::matrix::base_mat
+base_mat	include/matrix2.hxx	/^   struct base_mat$/;"	s	class:techsoft::matrix
+bestPastObject	mobile/object_based_feedback-26.py	/^def bestPastObject(new_hashes, past_objects, ongoing_object):$/;"	f
+best_matched_flowlet	mobile/best_matched_flowlet.cpp	/^bool best_matched_flowlet(uint32_t current_oid, list<chunk_hash *>$/;"	f
+build_advertisement	mobile/as_mobile.cpp	/^int build_advertisement(struct nfq_data* buf, int *size) {$/;"	f
+cbDown	base_station/as_base_station.cpp	/^static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,$/;"	f	file:
+cbDown	mobile/as_mobile.cpp	/^static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,$/;"	f	file:
+cbUp	base_station/as_base_station.cpp	/^static int cbUp(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,$/;"	f	file:
+cbUp	mobile/as_mobile.cpp	/^static int cbUp(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,$/;"	f	file:
+cdiv	include/matrix.cc	/^void cdiv (const T& xr, const T& xi, const T& yr, const T& yi, T& cdivr, T& cdivi) $/;"	f	namespace:techsoft
+ceil	include/matrix.cc	/^ceil (const matrix<T>& m)$/;"	f	namespace:techsoft
+cholbksb	include/matrix.cc	/^matrix<T>::cholbksb (const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+chold	include/matrix.cc	/^matrix<T>::chold ()$/;"	f	class:techsoft::matrix
+chunk	mobile/as_mobile.h	/^    unsigned char *chunk;$/;"	m	struct:hash_information
+chunk_hash	mobile/as_mobile.h	/^    chunk_hash(uint64_t _hash_value, uint16_t _chunk_length) :$/;"	f	struct:chunk_hash
+chunk_hash	mobile/as_mobile.h	/^struct chunk_hash {$/;"	s
+chunk_hdr	base_station/test.cpp	/^unsigned char chunk_hdr[2] = {'a','b'};$/;"	v
+chunk_length	mobile/as_mobile.h	/^    uint16_t chunk_length;$/;"	m	struct:chunk_hash
+chunk_length	mobile/as_mobile.h	/^    uint16_t chunk_length;$/;"	m	struct:hash_information
+clear_payload_hash_list	mobile/as_mobile.cpp	/^void clear_payload_hash_list(list<chunk_hash *> *payload_hash_list) {$/;"	f
+clone	include/matrix.cc	/^void matrix<T>::clone ()$/;"	f	class:techsoft::matrix
+cofact	include/matrix.cc	/^matrix<T>::cofact (size_t row, size_t col) const$/;"	f	class:techsoft::matrix
+colno	include/matrix2.hxx	/^   size_t colno () const throw() { return mPtr->ncol; }		\/\/ No. of columns$/;"	f	class:techsoft::matrix
+colno	include/matrix2.hxx	/^   size_t colno () const { return ncol_; }$/;"	f	class:techsoft::gmslice
+colno	include/matrix2.hxx	/^   size_t colno () const { return ncol_; }$/;"	f	class:techsoft::mslice
+colsize	include/matrix2.hxx	/^   size_t colsize () const throw() { return mPtr->nrow; }	\/\/ No. of elements in a column, i.e., it's row number$/;"	f	class:techsoft::matrix
+colsize	include/matrix2.hxx	/^   size_t colsize () const { return nrow_; }$/;"	f	class:techsoft::mslice
+colsize	include/matrix2.hxx	/^   size_t colsize () const { return srow_.size(); }$/;"	f	class:techsoft::gmslice
+column	include/matrix.cc	/^matrix<T>::column (size_t i) const$/;"	f	class:techsoft::matrix
+column	include/matrix.cc	/^matrix<T>::column (size_t i)$/;"	f	class:techsoft::matrix
+compute_hash	mobile/as_mobile.cpp	/^uint64_t compute_hash(unsigned char *payload, uint16_t chunked_upto,$/;"	f
+cond	include/matrix.cc	/^matrix<T>::cond () const$/;"	f	class:techsoft::matrix
+connection	mobile/as_mobile.h	/^    connection(const in_addr_t _src_addr, const uint16_t _src_port,$/;"	f	struct:connection
+connection	mobile/as_mobile.h	/^struct connection{$/;"	s
+connection_series	mobile/as_mobile.cpp	/^ConnectionSeriesType connection_series; $/;"	v
+covar_matrix	mobile/detect_boundary.cpp	/^dMatrix *covar_matrix(unsigned char *series, uint32_t series_len,$/;"	f
+covar_matrix	mobile/object_based_feedback-26.py	/^def covar_matrix(series, n, order):$/;"	f
+createQueue	base_station/as_base_station.cpp	/^int createQueue(struct nfq_handle *h, int queue_num, int$/;"	f
+createQueue	mobile/as_mobile.cpp	/^int createQueue(struct nfq_handle *h, int queue_num, int$/;"	f
+current_oid_map	mobile/as_mobile.cpp	/^OIDMap current_oid_map;$/;"	v
+dMatrix	mobile/as_mobile.h	/^typedef matrix<double> dMatrix;$/;"	t
+dedup	base_station/as_base_station.cpp	/^int dedup(struct nfq_data* buf, int *size) {$/;"	f
+dedup	mobile/as_mobile.cpp	/^int dedup(struct nfq_data* buf, int *size) {$/;"	f
+dedup_traffic	base_station/as_base_station.cpp	/^uint32_t dedup_traffic = 0;$/;"	v
+delta_seg_distance	mobile/object_based_feedback-26.py	/^def delta_seg_distance(ar_order, c_grow1, c_slide1, mid1, end1, c_grow2, c_slide2, mid2, end2):$/;"	f
+det	include/matrix.cc	/^matrix<T>::det () const$/;"	f	class:techsoft::matrix
+detectBoundary	mobile/object_based_feedback-26.py	/^def detectBoundary(series, series_len, s, l):$/;"	f
+detect_boundary	mobile/detect_boundary.cpp	/^bool detect_boundary(flow_packet *joint_packet, uint32_t index,$/;"	f
+diag	include/matrix.cc	/^matrix<T>::diag (int i) const$/;"	f	class:techsoft::matrix
+diag	include/matrix.cc	/^matrix<T>::diag (int i)$/;"	f	class:techsoft::matrix
+dst_addr	mobile/as_mobile.h	/^    in_addr_t dst_addr;$/;"	m	struct:connection
+dst_port	mobile/as_mobile.h	/^    uint16_t dst_port;$/;"	m	struct:connection
+dump_data	common/util.cpp	/^void dump_data(FILE *logfile, uint8_t thread_loglevel, uint8_t loglevel, unsigned char *pg, int len) {$/;"	f
+eigen	include/matrix.cc	/^matrix<T>::eigen (valarray<T>& eival) const$/;"	f	class:techsoft::matrix
+eigen	include/matrix.cc	/^matrix<T>::eigen (valarray<T>& eival, matrix<T>& eivec) const$/;"	f	class:techsoft::matrix
+eigen	include/matrix.cc	/^matrix<T>::eigen (valarray<T>& rev, valarray<T>& iev) const$/;"	f	class:techsoft::matrix
+eigen	include/matrix.cc	/^matrix<T>::eigen (valarray<T>& rev, valarray<T>& iev, matrix<T>& eivec) const$/;"	f	class:techsoft::matrix
+end	include/matrix2.hxx	/^   size_t end (size_t colno) const { return (srow_+nrow_-1)*colno+(scol_+ncol_); }$/;"	f	class:techsoft::mslice
+end	include/matrix2.hxx	/^   size_t end (size_t rowno) const { return srow_[rowno]+rsize_[rowno]; }$/;"	f	class:techsoft::gmslice
+epsilon	include/matrix.cc	/^T epsilon (const T& v) $/;"	f	namespace:techsoft
+epsilon	include/matrix.cc	/^inline double epsilon (complex<double>) $/;"	f	namespace:techsoft
+epsilon	include/matrix.cc	/^inline double epsilon (const double& v) $/;"	f	namespace:techsoft
+epsilon	include/matrix.cc	/^inline float epsilon (complex<float>) $/;"	f	namespace:techsoft
+epsilon	include/matrix.cc	/^inline long double epsilon (complex<long double>) $/;"	f	namespace:techsoft
+epsilon	include/matrix.cc	/^inline long double epsilon (const long double& v) $/;"	f	namespace:techsoft
+expo	common/rabin.cpp	/^int expo(long long value,long long expo,long long mod)$/;"	f
+extractPayload	mobile/object_based_feedback-26.py	/^def extractPayload(packet_buffer, linktype):$/;"	f
+feedback_bytes	base_station/as_base_station.cpp	/^uint32_t feedback_bytes = 0;$/;"	v
+feedback_cache	base_station/as_base_station.cpp	/^map<uint64_t, time_t> feedback_cache;$/;"	v
+final	include/lookup3.h	149;"	d
+final	mobile/object_based_feedback-26.py	/^def final(a, b, c):$/;"	f
+fingerprintBucket	mobile/object_based_feedback-26.py	/^def fingerprintBucket(fp):$/;"	f
+floor	include/matrix.cc	/^floor (const matrix<T>& m)$/;"	f	namespace:techsoft
+flow_packet	mobile/as_mobile.h	/^    flow_packet() : payload(NULL), payload_len(0) {}$/;"	f	struct:flow_packet
+flow_packet	mobile/as_mobile.h	/^struct flow_packet {$/;"	s
+flushlog	include/logging.h	/^inline void flushlog(FILE *logfile) {$/;"	f
+free	include/matrix.cc	/^matrix<T>::free ()$/;"	f	class:techsoft::matrix
+gain	mobile/detect_boundary.cpp	/^double gain(dMatrix *c_grow) {$/;"	f
+gen_hash	mobile/object_based_feedback-26.py	/^def gen_hash(string, left, right): # sha1 hash the string from 'left' to 'right'$/;"	f
+generate_feedback	mobile/as_mobile.cpp	/^void generate_feedback(uint32_t current_oid, uint32_t best_oid) {$/;"	f
+getPastObjects	mobile/object_based_feedback-26.py	/^def getPastObjects(new_hashes, new_oid, ts):$/;"	f
+getTop	mobile/object_based_feedback-26.py	/^def getTop(hit_history):$/;"	f
+get_handle	base_station/as_base_station.cpp	/^struct nfq_handle *get_handle() {$/;"	f
+get_handle	mobile/as_mobile.cpp	/^struct nfq_handle *get_handle() {$/;"	f
+get_past_flowlets	mobile/as_mobile.cpp	/^set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,$/;"	f
+get_random	common/util.cpp	/^int get_random() {$/;"	f
+get_ref_mat	include/matrix2.hxx	/^   matrix<T>& get_ref_mat () const { return m; }$/;"	f	class:techsoft::gmslice_matrix
+get_ref_mat	include/matrix2.hxx	/^   matrix<T>& get_ref_mat () const { return m; }$/;"	f	class:techsoft::mslice_matrix
+get_segment_distance	mobile/detect_boundary.cpp	/^double get_segment_distance(dMatrix *c_grow, dMatrix *c_slide, dMatrix$/;"	f
+get_slice	include/matrix2.hxx	/^   const gmslice& get_slice() const { return s; }$/;"	f	class:techsoft::gmslice_matrix
+get_slice	include/matrix2.hxx	/^   const mslice& get_slice() const { return s; }$/;"	f	class:techsoft::mslice_matrix
+get_top_hit_object	mobile/best_matched_flowlet.cpp	/^int get_top_hit_object(uint32_t current_oid, uint32_t$/;"	f
+getype	include/matrix2.hxx	/^   MATIRX_TYPE getype() { return MType_; }$/;"	f	class:techsoft::gmslice
+gmslice	include/matrix2.hxx	/^   gmslice (MATIRX_TYPE mtype) $/;"	f	class:techsoft::gmslice
+gmslice	include/matrix2.hxx	/^   gmslice (const gmslice& gm)$/;"	f	class:techsoft::gmslice
+gmslice	include/matrix2.hxx	/^   gmslice (size_t nCol, const valarray<size_t>& sRow, const valarray<size_t>& nRow)$/;"	f	class:techsoft::gmslice
+gmslice	include/matrix2.hxx	/^class gmslice$/;"	c	namespace:techsoft
+gmslice_matrix	include/matrix2.hxx	/^   gmslice_matrix (const gmslice_matrix& ms) : s(ms.s), m(ms.m) {;}$/;"	f	class:techsoft::gmslice_matrix
+gmslice_matrix	include/matrix2.hxx	/^   gmslice_matrix (matrix<T>& mm, const gmslice& ss)$/;"	f	class:techsoft::gmslice_matrix
+gmslice_matrix	include/matrix2.hxx	/^class gmslice_matrix$/;"	c	namespace:techsoft
+grow_covar	mobile/detect_boundary.cpp	/^void grow_covar(dMatrix *covar_last, unsigned char *series, int n) {$/;"	f
+grow_covar	mobile/object_based_feedback-26.py	/^def grow_covar(covar_last, order, series, n):$/;"	f
+hash_hdr	base_station/test.cpp	/^unsigned char hash_hdr[2] = {0x80, 0x00};$/;"	v
+hash_information	mobile/as_mobile.h	/^struct hash_information {$/;"	s
+hash_list	mobile/as_mobile.h	/^    list<uint64_t> hash_list;$/;"	m	struct:object_information
+hash_memory	mobile/as_mobile.cpp	/^map<uint64_t, hash_information *> hash_memory;$/;"	v
+hash_value	mobile/as_mobile.h	/^    uint64_t hash_value;$/;"	m	struct:chunk_hash
+hashbig	common/lookup3.cpp	/^uint32_t hashbig( const void *key, size_t length, uint32_t initval)$/;"	f
+hashes	base_station/sample_map.cpp	/^    map<int , int> hashes;$/;"	m	struct:mapid	file:
+hashes_seen_already	mobile/as_mobile.cpp	/^map<uint64_t, bool> hashes_seen_already;$/;"	v
+hashlittle	common/lookup3.cpp	/^uint32_t hashlittle( const void *key, size_t length, uint32_t initval)$/;"	f
+hashlittle	mobile/object_based_feedback-26.py	/^def hashlittle(data, initval=0):$/;"	f
+hashlittle2	common/lookup3.cpp	/^void hashlittle2($/;"	f
+hashlittle2	mobile/object_based_feedback-26.py	/^def hashlittle2(data, initval = 0, initval2 = 0):$/;"	f
+hashmask	include/lookup3.h	67;"	d
+hashsize	include/lookup3.h	66;"	d
+hashword	common/lookup3.cpp	/^uint32_t hashword($/;"	f
+hashword2	common/lookup3.cpp	/^void hashword2 ($/;"	f
+hit_count	mobile/as_mobile.cpp	/^map<uint32_t, map<uint32_t, uint32_t>* > hit_count;$/;"	v
+hqr2	include/matrix.cc	/^matrix<T>::hqr2 (valarray<T>& d, valarray<T>& e, matrix<T>& v, bool eivec)$/;"	f	class:techsoft::matrix
+hypot	include/matrix.cc	/^T hypot (T a, T b)$/;"	f	namespace:techsoft
+i	include/matrix2.hxx	/^   size_t i;$/;"	m	class:techsoft::Mref
+initializeGlobalVariables	mobile/object_based_feedback-26.py	/^def initializeGlobalVariables():$/;"	f
+initializeRabin	common/rabin.cpp	/^void initializeRabin(long long valueList[])$/;"	f
+insert_hash	base_station/as_base_station.cpp	/^uint16_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,$/;"	f
+inv	include/matrix.cc	/^bool matrix<T>::inv ()$/;"	f	class:techsoft::matrix
+inv_lu	include/matrix.cc	/^bool matrix<T>::inv_lu ()$/;"	f	class:techsoft::matrix
+inv_qr	include/matrix.cc	/^bool matrix<T>::inv_qr ()$/;"	f	class:techsoft::matrix
+inv_sv	include/matrix.cc	/^bool matrix<T>::inv_sv ()$/;"	f	class:techsoft::matrix
+ip_from_bytes	common/util.cpp	/^void ip_from_bytes(uint32_t addr, char *buf, int nbo){$/;"	f
+ip_header_checksum	common/as_common.cpp	/^uint16_t ip_header_checksum(const uint16_t *addr, register u_int len) { $/;"	f
+isColOrthogonal	include/matrix.cc	/^matrix<T>::isColOrthogonal () const$/;"	f	class:techsoft::matrix
+isDiagonal	include/matrix.cc	/^matrix<T>::isDiagonal () const$/;"	f	class:techsoft::matrix
+isLowerTriangular	include/matrix.cc	/^matrix<T>::isLowerTriangular () const$/;"	f	class:techsoft::matrix
+isNull	include/matrix.cc	/^matrix<T>::isNull () const throw()$/;"	f	class:techsoft::matrix
+isRowOrthogonal	include/matrix.cc	/^matrix<T>::isRowOrthogonal () const$/;"	f	class:techsoft::matrix
+isScalar	include/matrix.cc	/^matrix<T>::isScalar () const$/;"	f	class:techsoft::matrix
+isSingular	include/matrix.cc	/^matrix<T>::isSingular () const$/;"	f	class:techsoft::matrix
+isSkewSymmetric	include/matrix.cc	/^matrix<T>::isSkewSymmetric () const$/;"	f	class:techsoft::matrix
+isSquare	include/matrix2.hxx	/^   bool isSquare () const throw() { return (mPtr->nrow == mPtr->ncol); }$/;"	f	class:techsoft::matrix
+isSymmetric	include/matrix.cc	/^matrix<T>::isSymmetric () const$/;"	f	class:techsoft::matrix
+isUnit	include/matrix.cc	/^matrix<T>::isUnit () const throw()$/;"	f	class:techsoft::matrix
+isUpperTriangular	include/matrix.cc	/^matrix<T>::isUpperTriangular () const$/;"	f	class:techsoft::matrix
+isVecEq	include/matrix.cc	/^isVecEq (const valarray<T>& v1, const valarray<T>& v2)$/;"	f	namespace:techsoft
+last_advertised	mobile/as_mobile.cpp	/^map<uint32_t, map<uint32_t, uint32_t>* > last_advertised;$/;"	v
+last_match	mobile/as_mobile.cpp	/^map<uint32_t, map<uint32_t, uint32_t>* > last_match;$/;"	v
+length	base_station/sample_map.cpp	/^    int length;$/;"	m	struct:mapid	file:
+logfile	base_station/as_base_station.cpp	/^FILE *logfile = fopen("as_base_station.log", "w");$/;"	v
+logfile	mobile/as_mobile.cpp	/^FILE *logfile = fopen("as_mobile.log", "w");$/;"	v
+lubksb	include/matrix.cc	/^matrix<T>::lubksb (const valarray<size_t>& ri, const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+lud	include/matrix.cc	/^bool matrix<T>::lud (valarray<size_t>& ri, T* pDet)$/;"	f	class:techsoft::matrix
+lumpove	include/matrix.cc	/^matrix<T>::lumpove (const matrix<T>& ludm, const valarray<size_t>& ri, const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+m	include/matrix2.hxx	/^   const matrix<T>& m;$/;"	m	class:techsoft::Cmat_iter
+m	include/matrix2.hxx	/^   matrix<T>& m;$/;"	m	class:techsoft::Mat_iter
+m	include/matrix2.hxx	/^   matrix<T>& m;$/;"	m	class:techsoft::Mref
+m	include/matrix2.hxx	/^   matrix<T>& m;$/;"	m	class:techsoft::gmslice_matrix
+m	include/matrix2.hxx	/^   matrix<T>& m;$/;"	m	class:techsoft::mslice_matrix
+mPtr	include/matrix2.hxx	/^   base_mat *mPtr;$/;"	m	class:techsoft::matrix
+mac_from_bytes	common/util.cpp	/^void mac_from_bytes(unsigned char *mac, char *buf) {$/;"	f
+main	base_station/as_base_station.cpp	/^int main() {$/;"	f
+main	base_station/sample_map.cpp	/^int main()$/;"	f
+main	base_station/test.cpp	/^int main()$/;"	f
+main	mobile/as_mobile.cpp	/^int main() {$/;"	f
+main	mobile/object_based_feedback-26.py	/^def main():$/;"	f
+mapid	base_station/sample_map.cpp	/^struct mapid{$/;"	s	file:
+mapid	base_station/sample_map.cpp	/^typedef struct mapid mapid;$/;"	t	typeref:struct:mapid	file:
+matrix	include/matrix.cc	/^matrix<T>::matrix ()$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (const gmslice_matrix<T>& sm)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (const matrix<X>& m)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (const mslice_matrix<T>& sm)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (size_t nRow, size_t nCol)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (size_t nRow, size_t nCol, const T& e)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (size_t nRow, size_t nCol, const valarray<T>& vec)$/;"	f	class:techsoft::matrix
+matrix	include/matrix.cc	/^matrix<T>::matrix (size_t row, size_t col, const T* val, MatArrayType aType)$/;"	f	class:techsoft::matrix
+matrix	include/matrix2.hxx	/^class matrix$/;"	c	namespace:techsoft
+max	include/matrix.cc	/^const T& max (const T& x, const T& y)$/;"	f	namespace:techsoft
+max	include/matrix2.hxx	/^   T max () const { return mPtr->val.max(); }$/;"	f	class:techsoft::matrix
+min	include/matrix.cc	/^const T& min (const T& x, const T& y)$/;"	f	namespace:techsoft
+min	include/matrix2.hxx	/^   T min () const { return mPtr->val.min(); }$/;"	f	class:techsoft::matrix
+mix	include/lookup3.h	114;"	d
+mix	mobile/object_based_feedback-26.py	/^def mix(a, b, c):$/;"	f
+mobileCheckAndMakeMemory	mobile/object_based_feedback-26.py	/^def mobileCheckAndMakeMemory(new_oid):$/;"	f
+mobileInsertFp	mobile/object_based_feedback-26.py	/^def mobileInsertFp(fp_list, oid, ts, flag):$/;"	f
+modp	mobile/object_based_feedback-26.py	/^def modp(payload_len, payload):$/;"	f
+mslice	include/matrix2.hxx	/^   mslice (const mslice& ms)$/;"	f	class:techsoft::mslice
+mslice	include/matrix2.hxx	/^   mslice (size_t sRow, size_t sCol, size_t nRow, size_t nCol)$/;"	f	class:techsoft::mslice
+mslice	include/matrix2.hxx	/^class mslice$/;"	c	namespace:techsoft
+mslice_matrix	include/matrix2.hxx	/^   mslice_matrix (const mslice_matrix& ms) : s(ms.s), m(ms.m) {;}$/;"	f	class:techsoft::mslice_matrix
+mslice_matrix	include/matrix2.hxx	/^   mslice_matrix (matrix<T>& mm, const mslice& ss)$/;"	f	class:techsoft::mslice_matrix
+mslice_matrix	include/matrix2.hxx	/^class mslice_matrix$/;"	c	namespace:techsoft
+mswap	include/matrix.cc	/^void mswap (const Mat_iter<T>& x, const Mat_iter<T>& y)$/;"	f	namespace:techsoft
+mswap	include/matrix.cc	/^void mswap (const Mref<T>& x, const Mref<T>& y)$/;"	f	namespace:techsoft
+mswap	include/matrix.cc	/^void mswap (matrix<T>& x, matrix<T>& y)$/;"	f	namespace:techsoft
+ncol	include/matrix2.hxx	/^      size_t nrow, ncol;$/;"	m	struct:techsoft::matrix::base_mat
+ncol_	include/matrix2.hxx	/^   size_t ncol_;$/;"	m	class:techsoft::gmslice
+ncol_	include/matrix2.hxx	/^   size_t srow_,scol_, nrow_, ncol_;$/;"	m	class:techsoft::mslice
+new_packet	base_station/as_base_station.cpp	/^unsigned char *new_packet = NULL;$/;"	v
+new_packet	mobile/as_mobile.cpp	/^unsigned char *new_packet = NULL;$/;"	v
+next_oid	mobile/as_mobile.h	/^    uint32_t next_oid;$/;"	m	struct:object_information
+next_oid_set	mobile/as_mobile.h	/^    bool next_oid_set;$/;"	m	struct:object_information
+node	base_station/sample_map.cpp	/^mapid node,node1;$/;"	v
+node1	base_station/sample_map.cpp	/^mapid node,node1;$/;"	v
+norm1	include/matrix.cc	/^complex<double> matrix<complex<double> >::norm1 () const$/;"	f	class:techsoft::matrix
+norm1	include/matrix.cc	/^complex<float> matrix<complex<float> >::norm1 () const$/;"	f	class:techsoft::matrix
+norm1	include/matrix.cc	/^complex<long double> matrix<complex<long double> >::norm1 () const$/;"	f	class:techsoft::matrix
+norm1	include/matrix.cc	/^matrix<T>::norm1 () const$/;"	f	class:techsoft::matrix
+norm2	include/matrix.cc	/^complex<double> matrix<complex<double> >::norm2 () const$/;"	f	class:techsoft::matrix
+norm2	include/matrix.cc	/^complex<float> matrix<complex<float> >::norm2 () const$/;"	f	class:techsoft::matrix
+norm2	include/matrix.cc	/^complex<long double> matrix<complex<long double> >::norm2 () const$/;"	f	class:techsoft::matrix
+norm2	include/matrix.cc	/^matrix<T>::norm2 () const$/;"	f	class:techsoft::matrix
+normF	include/matrix.cc	/^complex<double> matrix<complex<double> >::normF () const$/;"	f	class:techsoft::matrix
+normF	include/matrix.cc	/^complex<float> matrix<complex<float> >::normF () const$/;"	f	class:techsoft::matrix
+normF	include/matrix.cc	/^complex<long double> matrix<complex<long double> >::normF () const$/;"	f	class:techsoft::matrix
+normF	include/matrix.cc	/^matrix<T>::normF () const$/;"	f	class:techsoft::matrix
+normI	include/matrix.cc	/^complex<double> matrix<complex<double> >::normI () const$/;"	f	class:techsoft::matrix
+normI	include/matrix.cc	/^complex<float> matrix<complex<float> >::normI () const$/;"	f	class:techsoft::matrix
+normI	include/matrix.cc	/^complex<long double> matrix<complex<long double> >::normI () const$/;"	f	class:techsoft::matrix
+normI	include/matrix.cc	/^matrix<T>::normI () const$/;"	f	class:techsoft::matrix
+nrow	include/matrix2.hxx	/^      size_t nrow, ncol;$/;"	m	struct:techsoft::matrix::base_mat
+nrow_	include/matrix2.hxx	/^   size_t srow_,scol_, nrow_, ncol_;$/;"	m	class:techsoft::mslice
+null	include/matrix.cc	/^matrix<T>::null ()$/;"	f	class:techsoft::matrix
+object_information	mobile/as_mobile.h	/^struct object_information {$/;"	s
+object_memory	mobile/as_mobile.cpp	/^map<uint32_t, object_information *> object_memory;$/;"	v
+oid_count	mobile/as_mobile.cpp	/^uint32_t oid_count = 0;$/;"	v
+oid_set	mobile/as_mobile.h	/^    set <uint32_t> oid_set;$/;"	m	struct:hash_information
+operator !	include/matrix.cc	/^inline matrix<T> matrix<T>::operator! () const$/;"	f	class:techsoft::matrix
+operator !=	include/matrix.cc	/^operator!= (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator &	include/matrix2.hxx	/^   T* operator& () const { if (m.shared()) m.clone(); return &m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator ()	include/matrix.cc	/^matrix<T>::operator() (size_t i, size_t j) const$/;"	f	class:techsoft::matrix
+operator ()	include/matrix.cc	/^matrix<T>::operator() (size_t i, size_t j)$/;"	f	class:techsoft::matrix
+operator ()	include/matrix2.hxx	/^   Cmat_iter<T> operator() (int i) const { return column(i); }$/;"	f	class:techsoft::matrix
+operator ()	include/matrix2.hxx	/^   Cmat_iter<T> operator() (size_t i) const { return column(i); }$/;"	f	class:techsoft::matrix
+operator ()	include/matrix2.hxx	/^   Mat_iter<T> operator() (int i) { return column(i); }$/;"	f	class:techsoft::matrix
+operator ()	include/matrix2.hxx	/^   Mat_iter<T> operator() (size_t i) { return column(i); }$/;"	f	class:techsoft::matrix
+operator *	include/matrix.cc	/^operator* (const T& el, const matrix<T>& m)$/;"	f	namespace:techsoft
+operator *	include/matrix.cc	/^operator* (const matrix<T>& m, const T& el)$/;"	f	namespace:techsoft
+operator *	include/matrix.cc	/^operator* (const matrix<T>& m, const valarray<T>& v)$/;"	f	namespace:techsoft
+operator *	include/matrix.cc	/^operator* (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator *	include/matrix.cc	/^operator* (const valarray<T>& v, const matrix<T>& m)$/;"	f	namespace:techsoft
+operator *	include/matrix2.hxx	/^   template <class X> T operator* (const X& e) { T y = *this; return y *= e;  }$/;"	f	class:techsoft::Mref
+operator *=	include/matrix.cc	/^Mat_iter<T>::operator*= (const valarray<T>& v) const$/;"	f	class:techsoft::Mat_iter
+operator *=	include/matrix.cc	/^matrix<T>::operator*= (const T& x)$/;"	f	class:techsoft::matrix
+operator *=	include/matrix.cc	/^matrix<T>::operator*= (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+operator *=	include/matrix.cc	/^void gmslice_matrix<T>::operator*= (const T& e) const$/;"	f	class:techsoft::gmslice_matrix
+operator *=	include/matrix.cc	/^void mslice_matrix<T>::operator*= (const T& e) const$/;"	f	class:techsoft::mslice_matrix
+operator *=	include/matrix2.hxx	/^   T& operator*= (const T& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] *= e; }$/;"	f	class:techsoft::Mref
+operator *=	include/matrix2.hxx	/^   template <class X> T& operator*= (const X& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] *= e; }$/;"	f	class:techsoft::Mref
+operator +	include/matrix.cc	/^operator+ (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator +	include/matrix2.hxx	/^   T operator+ () { return m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator +	include/matrix2.hxx	/^   matrix<T> operator+ () const { return *this; }$/;"	f	class:techsoft::matrix
+operator +	include/matrix2.hxx	/^   template <class X> T operator+ (const X& e) { T y = *this; return y += e;  }$/;"	f	class:techsoft::Mref
+operator ++	include/matrix2.hxx	/^   T operator++ () { if (m.shared()) m.clone(); return ++m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator ++	include/matrix2.hxx	/^   T operator++ (int) { if (m.shared()) m.clone(); return m.mPtr->val[i]++; }$/;"	f	class:techsoft::Mref
+operator +=	include/matrix.cc	/^Mat_iter<T>::operator+= (const valarray<T>& v) const$/;"	f	class:techsoft::Mat_iter
+operator +=	include/matrix.cc	/^matrix<T>::operator+= (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+operator +=	include/matrix.cc	/^void gmslice_matrix<T>::operator+= (const matrix<T>& m2) const$/;"	f	class:techsoft::gmslice_matrix
+operator +=	include/matrix.cc	/^void mslice_matrix<T>::operator+= (const matrix<T>& m2) const$/;"	f	class:techsoft::mslice_matrix
+operator +=	include/matrix2.hxx	/^   T& operator+= (const T& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] += e; }$/;"	f	class:techsoft::Mref
+operator +=	include/matrix2.hxx	/^   template <class X> T& operator+= (const X& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] += e; }$/;"	f	class:techsoft::Mref
+operator -	include/matrix.cc	/^matrix<T>::operator- () const$/;"	f	class:techsoft::matrix
+operator -	include/matrix.cc	/^operator- (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator -	include/matrix2.hxx	/^   T operator- () { return -m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator -	include/matrix2.hxx	/^   template <class X> T operator- (const X& e) { T y = *this; return y -= e;  }$/;"	f	class:techsoft::Mref
+operator --	include/matrix2.hxx	/^   T operator-- () { if (m.shared()) m.clone(); return --m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator --	include/matrix2.hxx	/^   T operator-- (int) { if (m.shared()) m.clone(); return m.mPtr->val[i]--; }$/;"	f	class:techsoft::Mref
+operator -=	include/matrix.cc	/^Mat_iter<T>::operator-= (const valarray<T>& v) const$/;"	f	class:techsoft::Mat_iter
+operator -=	include/matrix.cc	/^matrix<T>::operator-= (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+operator -=	include/matrix.cc	/^void gmslice_matrix<T>::operator-= (const matrix<T>& m2) const$/;"	f	class:techsoft::gmslice_matrix
+operator -=	include/matrix.cc	/^void mslice_matrix<T>::operator-= (const matrix<T>& m2) const$/;"	f	class:techsoft::mslice_matrix
+operator -=	include/matrix2.hxx	/^   T& operator-= (const T& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] -= e; }$/;"	f	class:techsoft::Mref
+operator -=	include/matrix2.hxx	/^   template <class X> T& operator-= (const X& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] -= e; }$/;"	f	class:techsoft::Mref
+operator /	include/matrix.cc	/^operator\/ (const T& el, const matrix<T>& m)$/;"	f	namespace:techsoft
+operator /	include/matrix.cc	/^operator\/ (const matrix<T>& m, const T& el)$/;"	f	namespace:techsoft
+operator /	include/matrix.cc	/^operator\/ (const matrix<T>& m, const valarray<T>& v)$/;"	f	namespace:techsoft
+operator /	include/matrix.cc	/^operator\/ (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator /	include/matrix.cc	/^operator\/ (const valarray<T>& v, const matrix<T>& m)$/;"	f	namespace:techsoft
+operator /	include/matrix2.hxx	/^   template <class X> T operator\/ (const X& e) { T y = *this; return y \/= e;  }$/;"	f	class:techsoft::Mref
+operator /=	include/matrix.cc	/^Mat_iter<T>::operator\/= (const valarray<T>& v) const$/;"	f	class:techsoft::Mat_iter
+operator /=	include/matrix.cc	/^matrix<T>::operator\/= (const T& x)$/;"	f	class:techsoft::matrix
+operator /=	include/matrix.cc	/^matrix<T>::operator\/= (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+operator /=	include/matrix.cc	/^void gmslice_matrix<T>::operator\/= (const T& e) const$/;"	f	class:techsoft::gmslice_matrix
+operator /=	include/matrix.cc	/^void mslice_matrix<T>::operator\/= (const T& e) const$/;"	f	class:techsoft::mslice_matrix
+operator /=	include/matrix2.hxx	/^   T& operator\/= (const T& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] \/= e; }$/;"	f	class:techsoft::Mref
+operator /=	include/matrix2.hxx	/^   template <class X> T& operator\/= (const X& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] \/= e; }$/;"	f	class:techsoft::Mref
+operator <	mobile/as_mobile.h	/^    bool operator<(const connection& Rhs) const {$/;"	f	struct:connection
+operator <<	include/matrix.cc	/^operator<< (ostream &os, const matrix<T>& m)$/;"	f	namespace:techsoft
+operator <<	include/matrix.cc	/^operator<< (ostream& os, const Cmat_iter<T>& v)$/;"	f	namespace:techsoft
+operator <<	include/matrix.cc	/^operator<< (ostream& os, const Mat_iter<T>& v)$/;"	f	namespace:techsoft
+operator <<	include/matrix.cc	/^operator<< (ostream& os, const Mref<T>& el)$/;"	f	namespace:techsoft
+operator <<	include/matrix.cc	/^operator<< (ostream& os, const valarray<T>& v)$/;"	f	namespace:techsoft
+operator =	include/matrix.cc	/^Mat_iter<T>::operator= (const T& e) const$/;"	f	class:techsoft::Mat_iter
+operator =	include/matrix.cc	/^Mat_iter<T>::operator= (const valarray<T>& v) const$/;"	f	class:techsoft::Mat_iter
+operator =	include/matrix.cc	/^matrix<T>& matrix<T>::operator= (const T& el)$/;"	f	class:techsoft::matrix
+operator =	include/matrix.cc	/^matrix<T>& matrix<T>::operator= (const matrix<X>& m)$/;"	f	class:techsoft::matrix
+operator =	include/matrix.cc	/^matrix<T>::operator= (const gmslice_matrix<T>& sm)$/;"	f	class:techsoft::matrix
+operator =	include/matrix.cc	/^matrix<T>::operator= (const matrix<T>& m)$/;"	f	class:techsoft::matrix
+operator =	include/matrix.cc	/^matrix<T>::operator= (const mslice_matrix<T>& sm)$/;"	f	class:techsoft::matrix
+operator =	include/matrix.cc	/^void gmslice_matrix<T>::operator= (const T& e) const$/;"	f	class:techsoft::gmslice_matrix
+operator =	include/matrix.cc	/^void gmslice_matrix<T>::operator= (const matrix<T>& m2) const$/;"	f	class:techsoft::gmslice_matrix
+operator =	include/matrix.cc	/^void mslice_matrix<T>::operator= (const T& e) const$/;"	f	class:techsoft::mslice_matrix
+operator =	include/matrix.cc	/^void mslice_matrix<T>::operator= (const matrix<T>& m2) const$/;"	f	class:techsoft::mslice_matrix
+operator =	include/matrix2.hxx	/^   T& operator= (const Mref<T>& e) const { if (m.shared()) m.clone(); T te = e; return m.mPtr->val[i] = te; }$/;"	f	class:techsoft::Mref
+operator =	include/matrix2.hxx	/^   T& operator= (const T& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] = e; }$/;"	f	class:techsoft::Mref
+operator =	include/matrix2.hxx	/^   template <class X> T& operator= (const X& e) const { if (m.shared()) m.clone(); return m.mPtr->val[i] = e; }$/;"	f	class:techsoft::Mref
+operator ==	include/matrix.cc	/^operator== (const matrix<T>& m1, const matrix<T>& m2)$/;"	f	namespace:techsoft
+operator >>	include/matrix.cc	/^operator>> (istream& is, Mat_iter<T> v)$/;"	f	namespace:techsoft
+operator >>	include/matrix.cc	/^operator>> (istream& is, Mref<T> el)$/;"	f	namespace:techsoft
+operator >>	include/matrix.cc	/^operator>> (istream& is, matrix<T>& m)$/;"	f	namespace:techsoft
+operator >>	include/matrix.cc	/^operator>> (istream& is, valarray<T>& v)$/;"	f	namespace:techsoft
+operator T	include/matrix2.hxx	/^   operator T () const { return m.mPtr->val[i]; }$/;"	f	class:techsoft::Mref
+operator []	include/matrix.cc	/^Cmat_iter<T>::operator[] (size_t i) const$/;"	f	class:techsoft::Cmat_iter
+operator []	include/matrix.cc	/^Mat_iter<T>::operator[] (size_t i) const$/;"	f	class:techsoft::Mat_iter
+operator []	include/matrix.cc	/^matrix<T>::operator[] (gmslice gm) const$/;"	f	class:techsoft::matrix
+operator []	include/matrix.cc	/^matrix<T>::operator[] (gmslice gm)$/;"	f	class:techsoft::matrix
+operator []	include/matrix.cc	/^matrix<T>::operator[] (mslice ms) const$/;"	f	class:techsoft::matrix
+operator []	include/matrix.cc	/^matrix<T>::operator[] (mslice ms)$/;"	f	class:techsoft::matrix
+operator []	include/matrix2.hxx	/^   Cmat_iter<T> operator[] (int i) const { return row(i); }$/;"	f	class:techsoft::matrix
+operator []	include/matrix2.hxx	/^   Cmat_iter<T> operator[] (size_t i) const { return row(i); }$/;"	f	class:techsoft::matrix
+operator []	include/matrix2.hxx	/^   Mat_iter<T> operator[] (int i) { return row(i); }$/;"	f	class:techsoft::matrix
+operator []	include/matrix2.hxx	/^   Mat_iter<T> operator[] (size_t i) { return row(i); }$/;"	f	class:techsoft::matrix
+operator valarray<T>	include/matrix2.hxx	/^   operator valarray<T> () const { return m.mPtr->val[s]; }$/;"	f	class:techsoft::Cmat_iter
+operator valarray<T>	include/matrix2.hxx	/^   operator valarray<T>() const { return m.mPtr->val[s]; }$/;"	f	class:techsoft::Mat_iter
+operator ~	include/matrix.cc	/^matrix<T> matrix<T>::operator~ () const$/;"	f	class:techsoft::matrix
+optimize_feedback	mobile/as_mobile.cpp	/^void optimize_feedback() {$/;"	f
+pack_buffer	include/util.h	43;"	d
+pack_hash_value	base_station/as_base_station.cpp	/^uint16_t pack_hash_value(unsigned char *packet, uint32_t left, uint32_t right) {$/;"	f
+pack_hash_value	mobile/as_mobile.cpp	/^uint16_t pack_hash_value(unsigned char *packet, uint32_t left, uint32_t right) {$/;"	f
+payload	mobile/as_mobile.h	/^    unsigned char *payload;$/;"	m	struct:flow_packet
+payload_len	mobile/as_mobile.h	/^    uint16_t payload_len;$/;"	m	struct:flow_packet
+poolCovar	mobile/object_based_feedback-26.py	/^def poolCovar(c_grow, c_slide, series, order, s, n): $/;"	f
+pool_covar	mobile/detect_boundary.cpp	/^dMatrix *pool_covar(dMatrix *c_grow, dMatrix *c_slide, unsigned char$/;"	f
+populatePastMobileMemory	mobile/object_based_feedback-26.py	/^def populatePastMobileMemory(past_pcap_file_name):$/;"	f
+pow	include/matrix.cc	/^pow (const matrix<T>& m, size_t n)$/;"	f	namespace:techsoft
+powers	base_station/as_base_station.cpp	/^long long powers[256];$/;"	v
+powers	mobile/as_mobile.cpp	/^long long powers[256];$/;"	v
+previous_oid	mobile/as_mobile.h	/^    uint32_t previous_oid;$/;"	m	struct:object_information
+previous_oid_set	mobile/as_mobile.h	/^    bool previous_oid_set;$/;"	m	struct:object_information
+printResult	mobile/object_based_feedback-26.py	/^def printResult(conn_tuple, best_seen_so_far, total_advertised_bytes):$/;"	f
+printSummary	mobile/object_based_feedback-26.py	/^def printSummary():$/;"	f
+print_mac	common/util.cpp	/^void print_mac(unsigned char *mac) {$/;"	f
+printlog	include/logging.h	/^inline void printlog(FILE *logfile, uint8_t loglevel, const uint8_t level, const char *format, ...)$/;"	f
+printlogwithtime	include/logging.h	/^inline void printlogwithtime(FILE *logfile, uint8_t loglevel, const uint8_t level, const char *format, ...) {$/;"	f
+qrbksb	include/matrix.cc	/^matrix<T>::qrbksb (const matrix<T>& r, const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+qrd	include/matrix.cc	/^matrix<T>::qrd (matrix<T>& r)$/;"	f	class:techsoft::matrix
+rabinFingerprints	common/rabin.cpp	/^uint16_t rabinFingerprints(uint16_t markers[], u_char* payload, int pay_len, long long valueList[], int min_len)$/;"	f
+rabin_hash	mobile/object_based_feedback-26.py	/^def rabin_hash(string,n,w): # rabin fingerprint the next w bytes from n in string$/;"	f
+rand	include/matrix.cc	/^matrix<T>::rand (int rmin, int rmax, int rseed)$/;"	f	class:techsoft::matrix
+rand	include/matrix.cc	/^void matrix<complex<double> >::rand (int rmin, int rmax, int rseed)$/;"	f	class:techsoft::matrix
+rand	include/matrix.cc	/^void matrix<complex<float> >::rand (int rmin, int rmax, int rseed)$/;"	f	class:techsoft::matrix
+rand	include/matrix.cc	/^void matrix<complex<long double> >::rand (int rmin, int rmax, int rseed)$/;"	f	class:techsoft::matrix
+rand_	include/matrix.cc	/^inline int rand_ () { return rand(); }$/;"	f	namespace:techsoft
+rank	include/matrix.cc	/^matrix<T>::rank () const$/;"	f	class:techsoft::matrix
+read_advertisement	base_station/as_base_station.cpp	/^int read_advertisement(struct nfq_data* buf, int *size) {$/;"	f
+recreate_original_payload	mobile/as_mobile.cpp	/^uint16_t recreate_original_payload(unsigned char* payload, uint16_t payload_len, struct ip* ip_hdr) {$/;"	f
+recvFeedback	base_station/as_base_station.cpp	/^int recvFeedback(struct nfq_data* buf, int *size, int flag)$/;"	f
+refcnt	include/matrix2.hxx	/^      int	 refcnt;$/;"	m	struct:techsoft::matrix::base_mat
+regular_cache	base_station/as_base_station.cpp	/^map<uint64_t, time_t> regular_cache; \/\/indexes the timestamp of each hash$/;"	v
+res_power	mobile/object_based_feedback-26.py	/^def res_power(c_matrix, order):$/;"	f
+resetAPCache	mobile/object_based_feedback-26.py	/^def resetAPCache():$/;"	f
+resize	include/matrix.cc	/^matrix<T>::resize (size_t nRow, size_t nCol, const T& dval)$/;"	f	class:techsoft::matrix
+rot	include/lookup3.h	68;"	d
+rot	mobile/object_based_feedback-26.py	/^def rot(x,k):$/;"	f
+row	include/matrix.cc	/^matrix<T>::row (size_t i) const$/;"	f	class:techsoft::matrix
+row	include/matrix.cc	/^matrix<T>::row (size_t i)$/;"	f	class:techsoft::matrix
+rowno	include/matrix2.hxx	/^   size_t rowno () const throw() { return mPtr->nrow; }		\/\/ No. of rows$/;"	f	class:techsoft::matrix
+rowno	include/matrix2.hxx	/^   size_t rowno () const { return nrow_; }$/;"	f	class:techsoft::mslice
+rowno	include/matrix2.hxx	/^   size_t rowno () const { return srow_.size(); }$/;"	f	class:techsoft::gmslice
+rowsize	include/matrix2.hxx	/^   size_t rowsize () const throw() { return mPtr->ncol; }	\/\/ No. of elements in a row, i.e., it's column number$/;"	f	class:techsoft::matrix
+rowsize	include/matrix2.hxx	/^   size_t rowsize () const { return ncol_; }$/;"	f	class:techsoft::gmslice
+rowsize	include/matrix2.hxx	/^   size_t rowsize () const { return ncol_; }$/;"	f	class:techsoft::mslice
+rsize_	include/matrix2.hxx	/^   valarray<size_t> srow_,rsize_;$/;"	m	class:techsoft::gmslice
+runPresentConnection	mobile/object_based_feedback-26.py	/^def runPresentConnection(pcap_file_name):$/;"	f
+s	include/matrix2.hxx	/^   gmslice s;$/;"	m	class:techsoft::gmslice_matrix
+s	include/matrix2.hxx	/^   mslice s;$/;"	m	class:techsoft::mslice_matrix
+s	include/matrix2.hxx	/^   slice s;$/;"	m	class:techsoft::Cmat_iter
+s	include/matrix2.hxx	/^   slice s;$/;"	m	class:techsoft::Mat_iter
+scol_	include/matrix2.hxx	/^   size_t srow_,scol_, nrow_, ncol_;$/;"	m	class:techsoft::mslice
+seg_distance	mobile/object_based_feedback-26.py	/^def seg_distance(ar_order, c_grow, c_slide, c_pooled, mid, end):$/;"	f
+shared	include/matrix2.hxx	/^   bool shared () { return (mPtr->refcnt > 1); }$/;"	f	class:techsoft::matrix
+sign	include/matrix.cc	/^T sign (T a, T b)$/;"	f	namespace:techsoft
+sign	include/matrix.cc	/^complex<double> sign (complex<double> a, complex<double> b)$/;"	f	namespace:techsoft
+sign	include/matrix.cc	/^complex<float> sign (complex<float> a, complex<float> b)$/;"	f	namespace:techsoft
+sign	include/matrix.cc	/^complex<long double> sign (complex<long double> a, complex<long double> b)$/;"	f	namespace:techsoft
+size	include/matrix2.hxx	/^   size_t size () const throw() { return mPtr->nrow * mPtr->ncol; }$/;"	f	class:techsoft::matrix
+size	include/matrix2.hxx	/^   size_t size () const { return nrow_ * ncol_; }$/;"	f	class:techsoft::mslice
+size	include/matrix2.hxx	/^   size_t size () const { return s.size(); }$/;"	f	class:techsoft::Cmat_iter
+size	include/matrix2.hxx	/^   size_t size () const { return s.size(); }$/;"	f	class:techsoft::Mat_iter
+size	include/matrix2.hxx	/^   size_t size () const { return srow_.size() * ncol_; }$/;"	f	class:techsoft::gmslice
+slide_covar	mobile/detect_boundary.cpp	/^void slide_covar(dMatrix *covar_last, unsigned char *series, int n) {$/;"	f
+slide_covar	mobile/object_based_feedback-26.py	/^def slide_covar(covar_last, order, series, n):$/;"	f
+solve	include/matrix.cc	/^matrix<T>::solve (const matrix<T>& v, matrix<T>& s) const$/;"	f	class:techsoft::matrix
+solve	include/matrix.cc	/^matrix<T>::solve (const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+solve_chol	include/matrix.cc	/^matrix<T>::solve_chol (const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+solve_lu	include/matrix2.hxx	/^   bool solve_lu (const valarray<T>& v, valarray<T>& s) const { return solve( v, s); }$/;"	f	class:techsoft::matrix
+solve_qr	include/matrix.cc	/^matrix<T>::solve_qr (const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+solve_sv	include/matrix.cc	/^matrix<T>::solve_sv (const valarray<T>& v, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+sqrt	include/matrix.cc	/^inline float sqrt (float v) { return (float)sqrt( (double)v); }$/;"	f	namespace:techsoft
+sqrt	include/matrix.cc	/^inline long double sqrt (long double v) { return sqrtl( v); }$/;"	f	namespace:techsoft
+src_addr	mobile/as_mobile.h	/^    in_addr_t src_addr;$/;"	m	struct:connection
+src_port	mobile/as_mobile.h	/^    uint16_t src_port;$/;"	m	struct:connection
+srow_	include/matrix2.hxx	/^   size_t srow_,scol_, nrow_, ncol_;$/;"	m	class:techsoft::mslice
+srow_	include/matrix2.hxx	/^   valarray<size_t> srow_,rsize_;$/;"	m	class:techsoft::gmslice
+start	include/matrix2.hxx	/^   size_t start (size_t colno) const { return srow_*colno+scol_; }$/;"	f	class:techsoft::mslice
+start	include/matrix2.hxx	/^   size_t start (size_t rowno) const { return srow_[rowno]; }$/;"	f	class:techsoft::gmslice
+sum	include/matrix2.hxx	/^   T sum () const { return mPtr->val.sum(); }$/;"	f	class:techsoft::matrix
+svbksb	include/matrix.cc	/^matrix<T>::svbksb (const matrix<T>& vc, const valarray<T>& w, const valarray<T>& b, valarray<T>& s) const$/;"	f	class:techsoft::matrix
+svd	include/matrix.cc	/^bool matrix<complex<double> >::svd (matrix<complex<double> >& vc, valarray<complex<double> >& w)$/;"	f	class:techsoft::matrix
+svd	include/matrix.cc	/^bool matrix<complex<float> >::svd (matrix<complex<float> >& vc, valarray<complex<float> >& w)$/;"	f	class:techsoft::matrix
+svd	include/matrix.cc	/^bool matrix<complex<long double> >::svd (matrix<complex<long double> >& vc, valarray<complex<long double> >& w)$/;"	f	class:techsoft::matrix
+svd	include/matrix.cc	/^matrix<T>::svd (matrix<T>& vc, valarray<T>& w)$/;"	f	class:techsoft::matrix
+system_loglevel	base_station/as_base_station.cpp	/^uint8_t system_loglevel = LOG_CRITICAL;$/;"	v
+system_loglevel	mobile/as_mobile.cpp	/^uint8_t system_loglevel = LOG_CRITICAL;$/;"	v
+techsoft	include/matrix.cc	/^namespace techsoft {$/;"	n	file:
+techsoft	include/matrix2.hxx	/^namespace techsoft {$/;"	n
+timestamp	mobile/as_mobile.h	/^    time_t timestamp;$/;"	m	struct:hash_information
+timestamp	mobile/as_mobile.h	/^    time_t timestamp;$/;"	m	struct:object_information
+tql2	include/matrix.cc	/^matrix<T>::tql2 (valarray<T>& d, valarray<T>& e, bool eivec)$/;"	f	class:techsoft::matrix
+trace	include/matrix.cc	/^matrix<T>::trace (int i) const$/;"	f	class:techsoft::matrix
+tred2	include/matrix.cc	/^matrix<T>::tred2 (valarray<T>& d, valarray<T>& e, bool eivec)$/;"	f	class:techsoft::matrix
+typesize	include/matrix2.hxx	/^   size_t typesize () const throw() { return sizeof(T); }$/;"	f	class:techsoft::matrix
+unit	include/matrix.cc	/^matrix<T>::unit ()$/;"	f	class:techsoft::matrix
+unpack_buffer	include/util.h	44;"	d
+updateConnectionInfo	mobile/object_based_feedback-26.py	/^def updateConnectionInfo(conn_tuple):$/;"	f
+updateObjects	mobile/object_based_feedback-26.py	/^def updateObjects(conn_tuple, payload, plen):$/;"	f
+updateStatisticsEachOld	mobile/object_based_feedback-26.py	/^def updateStatisticsEachOld(ongoing_object, old_object, new_hids, new_hids_len, hids_count):$/;"	f
+update_connection_series	mobile/as_mobile.cpp	/^void update_connection_series(connection connection_tuple, unsigned$/;"	f
+update_flowlets	mobile/as_mobile.cpp	/^uint32_t update_flowlets(connection connection_tuple, unsigned char$/;"	f
+update_global_state	mobile/best_matched_flowlet.cpp	/^void update_global_state(uint32_t past_oid, uint32_t current_oid,$/;"	f
+update_hash_memory	mobile/as_mobile.cpp	/^void update_hash_memory(uint32_t current_oid, unsigned char *payload,$/;"	f
+update_hashes	mobile/as_mobile.cpp	/^void update_hashes(uint32_t current_oid, unsigned char *payload, $/;"	f
+update_object_memory	mobile/as_mobile.cpp	/^void update_object_memory(bool update_previous_oid, uint32_t$/;"	f
+val	include/matrix2.hxx	/^      valarray<T> val;$/;"	m	struct:techsoft::matrix::base_mat
+value_type	include/matrix2.hxx	/^   typedef T value_type;$/;"	t	class:techsoft::gmslice_matrix
+value_type	include/matrix2.hxx	/^   typedef T value_type;$/;"	t	class:techsoft::matrix
+value_type	include/matrix2.hxx	/^   typedef T value_type;$/;"	t	class:techsoft::mslice_matrix
+~base_mat	include/matrix2.hxx	/^      ~base_mat () {;}$/;"	f	struct:techsoft::matrix::base_mat
+~flow_packet	mobile/as_mobile.h	/^    ~flow_packet() {$/;"	f	struct:flow_packet
+~matrix	include/matrix.cc	/^matrix<T>::~matrix ()$/;"	f	class:techsoft::matrix
