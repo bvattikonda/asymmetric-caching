@@ -1,10 +1,30 @@
-==============
- Base-station
-==============
+=====================
+ Precog-server(psrv)
+=====================
+- Receive user actions from the phone, and store in the files locally, both 
+- Parse the files to create user action tree and compute hit counts per action
+- Order the action tree nodes based on the hit count and decide the 
 - Run baseline dedup hashing, caching and using it for downstream traffic 
-- Run precog ranking algorithm, maintaining trees, etc
+- All metrics can be calculated at the server, as symmetric case
 
-==============
-    Mobile
-==============
-- Run baseline dedup unhashing and 
+METRICS:
+- Number of bytes send downstream over WiFi
+- Number of bytes sent downstream over cellular
+- Matching bytes in cellular data and prefetch cache
+
+=====================
+ Precog-client(pcli)
+=====================
+1. Detect if mobile is on WiFi or cellular
+
+2. If on WiFi:
+- Send user actions upstream to source (transfer all data files) 
+- Ask precog-server to send prefetched data downstream
+- Run baseline dedup unhashing and inflating the packets and storing them in cache
+
+3. If on cellular:
+- Trigger Firefox extension to enable creation of data files which store actions of users
+OR
+Send the connectivity and action data files upstream so server can choose which actions to learn history from
+- Run baseline dedup while natural network access of user. 
+- Remember hashes of new packets
