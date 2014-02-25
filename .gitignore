@@ -2,6 +2,7 @@
 *.swp
 *.log
 *.py
-*.txt
 as_base_station
 as_mobile
+pc_client
+pc_server

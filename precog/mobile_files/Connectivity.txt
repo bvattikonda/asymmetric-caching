@@ -1,0 +1,217 @@
+1392705204655,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -51, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392705204736,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -51, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392705822126,Mobile,75136499,0.0
+1392705849637,No connection
+1392705902812,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -50, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392708107062,No connection
+1392729498948,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -49, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392733216543,No connection
+1392736299106,No connection
+1392737902871,No connection
+1392739561888,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:b2:a1, Supplicant state: COMPLETED, RSSI: -85, Link speed: 135, Frequency: 5260, Net ID: 2, Metered hint: false
+1392739622409,WiFi,SSID: hpinternet, BSSID: 88:51:fb:85:f1:81, Supplicant state: COMPLETED, RSSI: -84, Link speed: 135, Frequency: 5220, Net ID: 2, Metered hint: false
+1392739801538,No connection
+1392740575073,Mobile,75146561,0.0
+1392741125689,No connection
+1392745551617,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:94:31, Supplicant state: COMPLETED, RSSI: -79, Link speed: 65, Frequency: 2412, Net ID: 2, Metered hint: false
+1392746257968,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -66, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392747386294,WiFi,SSID: hpinternet, BSSID: a0:48:1c:41:42:a1, Supplicant state: COMPLETED, RSSI: -71, Link speed: 135, Frequency: 5745, Net ID: 2, Metered hint: false
+1392748206653,Mobile,84990716,0.03462667466506699
+1392751464450,Mobile,No Activity 
+1392751488683,Mobile,86871308,5.643075476134493E-5
+1392752317240,No connection
+1392755772759,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:94:b1, Supplicant state: COMPLETED, RSSI: -78, Link speed: 65, Frequency: 2412, Net ID: 2, Metered hint: false
+1392759090352,No connection
+1392759845232,WiFi,SSID: hpguest, BSSID: 2c:76:8a:f0:57:20, Supplicant state: COMPLETED, RSSI: -78, Link speed: 135, Frequency: 5785, Net ID: 1, Metered hint: false
+1392760611890,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:80, Supplicant state: COMPLETED, RSSI: -79, Link speed: 65, Frequency: 5825, Net ID: 1, Metered hint: false
+1392760655116,WiFi,SSID: hpinternet, BSSID: 2c:41:38:f5:8f:81, Supplicant state: COMPLETED, RSSI: -73, Link speed: 65, Frequency: 5825, Net ID: 2, Metered hint: false
+1392760884465,No connection
+1392781699282,No connection
+1392783382266,No connection
+1392783509757,WiFi,SSID: hpguest, BSSID: 2c:76:8a:f0:d5:01, Supplicant state: COMPLETED, RSSI: -85, Link speed: 121, Frequency: 5260, Net ID: 1, Metered hint: false
+1392784291365,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -60, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392784789530,No connection
+1392785570948,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -39, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392789236913,No connection
+1392791834628,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -53, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392796805780,No connection
+1392797500763,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -41, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392798077974,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -42, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392801101990,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -40, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392801685269,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -40, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392802261940,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -39, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392815647451,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -40, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392816224620,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -43, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392820118365,No connection
+1392826098777,WiFi,SSID: hpguest, BSSID: 2c:76:8a:f9:94:40, Supplicant state: COMPLETED, RSSI: -75, Link speed: 121, Frequency: 5540, Net ID: 1, Metered hint: false
+1392826397040,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:b2:c1, Supplicant state: COMPLETED, RSSI: -79, Link speed: 135, Frequency: 5300, Net ID: 2, Metered hint: false
+1392826530824,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:90, Supplicant state: COMPLETED, RSSI: -78, Link speed: 58, Frequency: 2437, Net ID: 1, Metered hint: false
+1392827186929,Mobile,86948211,0.00431753649270146
+1392827836686,No connection
+1392827849546,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:b4:61, Supplicant state: COMPLETED, RSSI: -56, Link speed: 135, Frequency: -1, Net ID: 2, Metered hint: false
+1392830866388,Mobile,No Activity 
+1392830981163,Mobile,92995002,9.76E-4
+1392832619411,WiFi,SSID: hpguest, BSSID: 2c:76:8a:f9:b4:60, Supplicant state: COMPLETED, RSSI: -58, Link speed: 135, Frequency: 5180, Net ID: 5, Metered hint: false
+1392832759490,Mobile,93144487,0.0
+1392832766568,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:b2:c1, Supplicant state: COMPLETED, RSSI: -75, Link speed: 135, Frequency: 5300, Net ID: 2, Metered hint: false
+1392832802420,Mobile,93154667,0.0
+1392832834223,Mobile,No Activity 
+1392834780904,Mobile,No Activity 
+1392834788866,Mobile,No Activity 
+1392834826208,Mobile,93213098,0.0
+1392834833285,WiFi,SSID: hpguest, BSSID: 88:51:fb:85:f1:80, Supplicant state: COMPLETED, RSSI: -83, Link speed: 135, Frequency: 5220, Net ID: 5, Metered hint: false
+1392834869704,Mobile,93229896,0.0
+1392834876831,WiFi,SSID: hpinternet, BSSID: 88:51:fb:85:f1:81, Supplicant state: COMPLETED, RSSI: -80, Link speed: 135, Frequency: 5220, Net ID: 2, Metered hint: false
+1392835379806,Mobile,93241002,0.004894042383046781
+1392835386870,Mobile,No Activity 
+1392835525374,Mobile,93254844,0.0010043982407037186
+1392835532457,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:74:21, Supplicant state: COMPLETED, RSSI: -82, Link speed: 135, Frequency: 5540, Net ID: 2, Metered hint: false
+1392835704007,No connection
+1392835746657,WiFi,SSID: hpinternet, BSSID: 88:51:fb:85:f1:81, Supplicant state: COMPLETED, RSSI: -81, Link speed: 135, Frequency: 5220, Net ID: 2, Metered hint: false
+1392836071644,WiFi,SSID: hpinternet, BSSID: 88:51:fb:85:f1:81, Supplicant state: COMPLETED, RSSI: -81, Link speed: 135, Frequency: 5220, Net ID: 2, Metered hint: false
+1392836111922,Mobile,93258555,0.015968012794882046
+1392836126403,Mobile,No Activity 
+1392836478356,Mobile,93270841,0.02022391043582567
+1392836487077,Mobile,93285225,0.0
+1392836660362,WiFi,SSID: hpguest, BSSID: 2c:76:8a:f9:74:20, Supplicant state: COMPLETED, RSSI: -78, Link speed: 121, Frequency: 5540, Net ID: 5, Metered hint: false
+1392836694269,WiFi,SSID: hpinternet, BSSID: 88:51:fb:85:f1:81, Supplicant state: COMPLETED, RSSI: -76, Link speed: 135, Frequency: 5220, Net ID: 2, Metered hint: false
+1392836821329,Mobile,93292143,0.005418788410886742
+1392836830746,Mobile,No Activity 
+1392841196573,Mobile,93296866,0.07698122253296044
+1392841805702,Mobile,No Activity 
+1392842861648,Mobile,94160845,0.012615076984603079
+1392842868673,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:80, Supplicant state: COMPLETED, RSSI: -82, Link speed: 58, Frequency: 5825, Net ID: 5, Metered hint: false
+1392842913936,Mobile,94176603,0.0017560975609756098
+1392843385871,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:90, Supplicant state: COMPLETED, RSSI: -67, Link speed: 65, Frequency: 2412, Net ID: 5, Metered hint: false
+1392843408473,Mobile,94202718,0.0023462614954018394
+1392843415598,WiFi,SSID: hpinternet, BSSID: a0:48:1c:41:44:a1, Supplicant state: COMPLETED, RSSI: -60, Link speed: 135, Frequency: 5180, Net ID: 2, Metered hint: false
+1392849115643,Mobile,94217328,0.0039326837909654565
+1392851675650,Mobile,No Activity 
+1392853028153,WiFi,SSID: hpguest, BSSID: a0:48:1c:41:44:a0, Supplicant state: COMPLETED, RSSI: -63, Link speed: 150, Frequency: 5180, Net ID: 5, Metered hint: false
+1392853028214,WiFi,SSID: hpguest, BSSID: a0:48:1c:41:44:a0, Supplicant state: COMPLETED, RSSI: -63, Link speed: 150, Frequency: 5180, Net ID: 5, Metered hint: false
+1392857191902,Mobile,96109149,0.0
+1392857281055,Mobile,No Activity 
+1392859296535,Mobile,96118979,0.012195960807838434
+1392859303556,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:80, Supplicant state: COMPLETED, RSSI: -68, Link speed: 65, Frequency: 5825, Net ID: 5, Metered hint: false
+1392864735310,Mobile,No Activity 
+1392864774724,Mobile,96182000,5.349019607843137E-4
+1392864782056,Mobile,No Activity 
+1392864884622,Mobile,96196075,0.004084766093562575
+1392865479946,Mobile,No Activity 
+1392865591851,Mobile,96248063,0.11488844462215114
+1392865642518,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -59, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392869211356,Mobile,96343940,0.0
+1392869218450,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -54, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392869960442,Mobile,96382555,0.0063689786128323005
+1392869967500,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -54, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392870537835,Mobile,96407813,8.316673330667734E-5
+1392870544885,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -54, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392873687371,Mobile,96422179,0.0
+1392873694512,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -56, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392878401891,Mobile,No Activity 
+1392878403928,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -49, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392881643605,Mobile,96456461,3.759248150369926E-4
+1392881650644,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -53, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392884463471,Mobile,96489909,0.013141371725654868
+1392884470507,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -46, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392884681622,Mobile,96517824,0.0
+1392884688638,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -47, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392885072489,Mobile,96532284,0.0
+1392885079604,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -49, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392885282538,Mobile,96546731,0.0
+1392885289628,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -50, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392888288340,Mobile,96571638,0.0014541091781643672
+1392888295389,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -47, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392893031456,Mobile,96587396,5.069972011195521E-4
+1392893038499,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -44, Link speed: 65, Frequency: 2452, Net ID: 3, Metered hint: false
+1392901839718,Mobile,96619201,0.008
+1392901846769,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -44, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392903297519,Mobile,96638015,0.0
+1392903304599,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -44, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392904802490,Mobile,96652620,0.0
+1392904809668,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -42, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392905384750,Mobile,96667006,0.0
+1392905391847,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -47, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392906586375,Mobile,96681115,0.0
+1392906593465,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -46, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392908402366,Mobile,96695992,0.0
+1392908409402,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -43, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392910114622,Mobile,96705433,0.0
+1392910121741,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -55, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392914566489,Mobile,96717873,0.0624408945686901
+1392915419699,Mobile,No Activity 
+1392915819068,No connection
+1392915831358,Mobile,96795254,0.011044431161585974
+1392916306401,No connection
+1392919227532,No connection
+1392933913282,No connection
+1392934061474,No connection
+1392934904334,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:90, Supplicant state: COMPLETED, RSSI: -77, Link speed: 58, Frequency: 2412, Net ID: 4, Metered hint: false
+1392935363003,WiFi,SSID: hpinternet, BSSID: a0:48:1c:41:44:a1, Supplicant state: COMPLETED, RSSI: -62, Link speed: 135, Frequency: 5180, Net ID: 1, Metered hint: false
+1392935619916,No connection
+1392938844874,No connection
+1392944944715,No connection
+1392946315946,WiFi,SSID: hpguest, BSSID: a0:48:1c:41:44:a0, Supplicant state: COMPLETED, RSSI: -66, Link speed: 135, Frequency: 5180, Net ID: 4, Metered hint: false
+1392946892722,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:80, Supplicant state: COMPLETED, RSSI: -80, Link speed: 65, Frequency: 5825, Net ID: 4, Metered hint: false
+1392947102330,No connection
+1392947885013,No connection
+1392952397934,No connection
+1392952844011,No connection
+1392953679560,No connection
+1392955260820,No connection
+1392955637917,No connection
+1392959923254,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -56, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392964960071,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -51, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392965875099,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -54, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392968621835,No connection
+1392969189894,No connection
+1392969604601,No connection
+1392970215629,No connection
+1392970530838,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -40, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392974705861,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -41, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1392978339306,No connection
+1392978657353,No connection
+1392989407893,No connection
+1392990944620,No connection
+1393002649638,WiFi,SSID: hpinternet, BSSID: 2c:76:8a:f9:b4:61, Supplicant state: COMPLETED, RSSI: -55, Link speed: 135, Frequency: 5260, Net ID: 1, Metered hint: false
+1393015549060,No connection
+1393017102683,Mobile,100728413,0.037925629748100764
+1393017916636,WiFi,SSID: hpguest, BSSID: a0:48:1c:41:44:a0, Supplicant state: COMPLETED, RSSI: -66, Link speed: 135, Frequency: 5180, Net ID: 4, Metered hint: false
+1393022435332,No connection
+1393022730642,WiFi,SSID: hpinternet, BSSID: 2c:41:38:f5:8f:81, Supplicant state: COMPLETED, RSSI: -79, Link speed: 65, Frequency: 5825, Net ID: 1, Metered hint: false
+1393023163749,WiFi,SSID: hpguest, BSSID: 2c:41:38:f5:8f:90, Supplicant state: COMPLETED, RSSI: -78, Link speed: 58, Frequency: 2412, Net ID: 4, Metered hint: false
+1393024605046,WiFi,SSID: hpinternet, BSSID: a0:48:1c:41:44:a1, Supplicant state: COMPLETED, RSSI: -59, Link speed: 135, Frequency: 5180, Net ID: 1, Metered hint: false
+1393029246988,No connection
+1393031097058,No connection
+1393031856303,No connection
+1393034044844,No connection
+1393034621821,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -49, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393035769859,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -46, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393038008589,No connection
+1393038211840,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -52, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393039766581,No connection
+1393048471953,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -52, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393052168984,No connection
+1393052483046,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -56, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393059046277,No connection
+1393059371881,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -52, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393080099361,No connection
+1393083526133,No connection
+1393083965662,No connection
+1393086094903,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -53, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393086986823,No connection
+1393088688125,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -46, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393089836102,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -46, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393092861363,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -44, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393098992495,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -44, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393101284227,Mobile,104931107,6.366726654669066E-4
+1393101454308,Mobile,302317,0.015916800000000002
+1393101461328,Mobile,374702,0.05961687662467507
+1393101636014,No connection
+1393101636227,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -47, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393101639548,Mobile,No Activity 
+1393120733932,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -43, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false
+1393146513982,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -57, Link speed: 58, Frequency: 2452, Net ID: 2, Metered hint: false
+1393160605641,No connection
+1393181085753,Mobile,9114430,0.06885662867426515
+1393186115667,WiFi,SSID: Thumper, BSSID: 00:1d:d4:69:87:b0, Supplicant state: COMPLETED, RSSI: -55, Link speed: 65, Frequency: 2452, Net ID: 2, Metered hint: false

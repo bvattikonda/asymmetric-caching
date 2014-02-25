@@ -3,11 +3,23 @@
 =====================
 - Receive user actions from the phone, and store in the files locally, both 
 - Parse the files to create user action tree and compute hit counts per action
+<<<<<<< Updated upstream
 - Order the action tree nodes based on the hit count and decide the 
 - Run baseline dedup hashing, caching and using it for downstream traffic 
 - All metrics can be calculated at the server, as symmetric case
 
 METRICS:
+=======
+- Order the action tree nodes based on the hit count and decide the actions to be preplayed
+- Trigger SlimerJS to preplay these actions in a directory
+- Push downloaded content from the directory to mobile phone
+- Run baseline dedup hashing, caching and using it for downstream traffic 
+
+==========
+ METRICS
+==========
+All metrics can be calculated at the server, as symmetric case
+>>>>>>> Stashed changes
 - Number of bytes send downstream over WiFi
 - Number of bytes sent downstream over cellular
 - Matching bytes in cellular data and prefetch cache

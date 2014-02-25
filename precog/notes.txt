@@ -1,0 +1,2 @@
+http://www.scratchbox.org/documentation/user/scratchbox-1.0/html/tutorial.html
+http://scratchbox.org/download/files/sbox-releases/apophis/tarball/
