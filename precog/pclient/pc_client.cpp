@@ -15,7 +15,7 @@ map<uint32_t, map<uint32_t, uint32_t>* > hit_count;
 map<uint32_t, map<uint32_t, uint32_t>* > last_match;
 map<uint32_t, map<uint32_t, uint32_t>* > last_advertised;
 
-FILE *logfile = fopen("as_mobile.log", "w");
+FILE *logfile = fopen("pc_client.log", "w");
 uint8_t system_loglevel = LOG_CRITICAL;
 
 /********************* cache management ***************************/

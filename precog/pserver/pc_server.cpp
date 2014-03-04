@@ -7,7 +7,7 @@ long long powers[256];
 map<uint64_t, time_t> regular_cache; //indexes the timestamp of each hash
 map<uint64_t, time_t> prefetch_cache;
 
-FILE *logfile = fopen("as_base_station.log", "w");
+FILE *logfile = fopen("pc_server.log", "w");
 uint8_t system_loglevel = LOG_CRITICAL;
 
 uint32_t actual_traffic = 0;
