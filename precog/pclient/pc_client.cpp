@@ -16,7 +16,7 @@ map<uint32_t, map<uint32_t, uint32_t>* > last_match;
 map<uint32_t, map<uint32_t, uint32_t>* > last_advertised;
 
 FILE *logfile = fopen("pc_client.log", "w");
-uint8_t system_loglevel = LOG_CRITICAL;
+uint8_t system_loglevel = LOG_DEBUG;
 
 /********************* cache management ***************************/
 

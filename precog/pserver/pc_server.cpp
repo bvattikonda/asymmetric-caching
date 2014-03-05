@@ -8,7 +8,7 @@ map<uint64_t, time_t> regular_cache; //indexes the timestamp of each hash
 map<uint64_t, time_t> prefetch_cache;
 
 FILE *logfile = fopen("pc_server.log", "w");
-uint8_t system_loglevel = LOG_CRITICAL;
+uint8_t system_loglevel = LOG_DEBUG;
 
 uint32_t actual_traffic = 0;
 uint32_t dedup_traffic = 0;
@@ -31,7 +31,7 @@ uint16_t pack_hash_value(unsigned char *packet, uint32_t left, uint32_t right) {
     return bytes_packed;
 }
 
-uint16_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,
+uint64_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,
         unsigned char *payload,
         uint16_t last_marker,
         bool *dedup_flag,
@@ -169,6 +169,7 @@ int dedup(struct nfq_data* buf, int *size) {
 
     for(list<uint64_t>::iterator it = current_hash_list.begin(); it !=
         current_hash_list.end(); it++) {
+    	printlog(logfile, system_loglevel, LOG_DEBUG, "Inserting hash %llx\n", it);
         regular_cache[(*it)] = current_timestamp;
     }
 
