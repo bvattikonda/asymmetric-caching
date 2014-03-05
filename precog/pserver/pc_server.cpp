@@ -40,7 +40,7 @@ uint64_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,
     uint32_t left = 0, right = 0;
     hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
     printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-            " from %d to %d\n", packed_upto, packed_upto +
+            " from %d to %d\n", local_packed_upto, local_packed_upto +
             chunk_length);
     uint64_t hash_value = right + (((uint64_t)left)<<32);
     uint16_t advance_by = 0;
