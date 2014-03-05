@@ -247,7 +247,7 @@ int dedup(struct nfq_data* buf, int *size) {
 
     unsigned char *pkt_ptr = NULL;
     /* get the packet from ip header onwards */
-    if(nfq_get_payload(buf, (char **)&pkt_ptr) == -1) {
+    if(nfq_get_payload(buf, &pkt_ptr) == -1) {
         printlog(logfile, system_loglevel, LOG_CRITICAL,
         "Deduplication code invoked without the packet\n");
     }
@@ -329,7 +329,7 @@ int dedup(struct nfq_data* buf, int *size) {
 
 static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,
         struct nfq_data *nfa, void *payload) {
-    char *send_data;
+    unsigned char *send_data;
     int i = 0,newSize = 0;
     u_int32_t id = dedup(nfa, &newSize);
     i = nfq_get_payload(nfa, &send_data);
