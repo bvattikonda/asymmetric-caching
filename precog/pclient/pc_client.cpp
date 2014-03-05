@@ -92,7 +92,7 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
         hash_value = compute_hash(payload, last_marker, chunk_length);
         update_hashes(current_oid, payload, chunk_length, last_marker,
                 hash_value, current_time);
-	last_marker = store_marks[i];
+        last_marker = store_marks[i];
     }
 
     /* hashes of the tail */
@@ -138,14 +138,14 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
         chunk_length = store_marks[i] - last_marker; 
         hash_value = compute_hash(payload, last_marker, chunk_length); 
         /*
-        if(hash_memory.find(hash_value) != hash_memory.end()) {
-            for(set<uint32_t>::iterator it =
-                hash_memory[hash_value]->oid_set.begin();
-                it != hash_memory[hash_value]->oid_set.end();
-                it++) {
-                past_flowlets->insert(*it);
-            }
-        }*/
+           if(hash_memory.find(hash_value) != hash_memory.end()) {
+           for(set<uint32_t>::iterator it =
+           hash_memory[hash_value]->oid_set.begin();
+           it != hash_memory[hash_value]->oid_set.end();
+           it++) {
+           past_flowlets->insert(*it);
+           }
+           }*/
         update_hashes(current_oid, payload, chunk_length, last_marker,
                 hash_value, current_time);
         payload_hash_list->push_back(new chunk_hash(hash_value,
@@ -161,14 +161,14 @@ set<uint32_t> *get_past_flowlets(uint32_t current_oid, unsigned char *payload,
         chunk_length = payload_len - chunked_upto;
         hash_value = compute_hash(payload, chunked_upto, chunk_length); 
         /*
-        if(hash_memory.find(hash_value) != hash_memory.end()) {
-            for(set<uint32_t>::iterator it =
-                hash_memory[hash_value]->oid_set.begin();
-                it != hash_memory[hash_value]->oid_set.end();
-                it++) {
-                past_flowlets->insert(*it);
-            }
-        }*/
+           if(hash_memory.find(hash_value) != hash_memory.end()) {
+           for(set<uint32_t>::iterator it =
+           hash_memory[hash_value]->oid_set.begin();
+           it != hash_memory[hash_value]->oid_set.end();
+           it++) {
+           past_flowlets->insert(*it);
+           }
+           }*/
         update_hashes(current_oid, payload, chunk_length,
                 chunked_upto, hash_value, current_time);
         payload_hash_list->push_back(new chunk_hash(hash_value,
@@ -250,9 +250,9 @@ int dedup(struct nfq_data* buf, int *size) {
     /* get the packet from ip header onwards */
     if(nfq_get_payload(buf, &pkt_ptr) == -1) {
         printlog(logfile, system_loglevel, LOG_CRITICAL,
-        "Deduplication code invoked without the packet\n");
+                "Deduplication code invoked without the packet\n");
     }
-    
+
     struct ip *ip_hdr = (struct ip *)pkt_ptr;
     uint32_t size_ip = 4 * ip_hdr->ip_hl;
 
@@ -264,7 +264,7 @@ int dedup(struct nfq_data* buf, int *size) {
     }
 
     if(ip_hdr->ip_p != IP_PROTO_TCP && ip_hdr->ip_p != DEDUP_CLEAR &&
-        ip_hdr->ip_p != DEDUP_MIXED) {
+            ip_hdr->ip_p != DEDUP_MIXED) {
         printlog(logfile, system_loglevel, LOG_WARN, "Received a"
                 "non TCP packet\n");
         *size = ntohs(ip_hdr->ip_len);
@@ -282,7 +282,7 @@ int dedup(struct nfq_data* buf, int *size) {
     printlog(logfile, system_loglevel, LOG_DEBUG, "Length parameters,"
             "ip_len: %d, size_ip: %d, size_tcp: %d, payload_len:"
             "%d\n", ntohs(ip_hdr->ip_len), size_ip, size_tcp, payload_len);
-  //  list<chunk_hash *> *payload_hash_list = new list<chunk_hash *>;
+    //  list<chunk_hash *> *payload_hash_list = new list<chunk_hash *>;
     connection connection_tuple(ip_hdr->ip_src.s_addr,
             ntohs(tcp_hdr->source),
             ip_hdr->ip_dst.s_addr,
@@ -411,10 +411,10 @@ int main() {
         max_fd = down_fd;
 
     /*
-    int up_fd = createQueue(h, UP_MOBILE_QUEUE, &cbUp);
-    if(up_fd > max_fd)
-        max_fd = up_fd;
-    */
+       int up_fd = createQueue(h, UP_MOBILE_QUEUE, &cbUp);
+       if(up_fd > max_fd)
+       max_fd = up_fd;
+     */
     int up_fd = 0;
     printlog(logfile, system_loglevel, LOG_DEBUG, 
             "Queue packet descriptors, down_fd: %d, up_fd: %d\n",
@@ -442,15 +442,15 @@ int main() {
             }
         } 
         /*
-        if(FD_ISSET(up_fd, &rfds)) {
-            rv = recv(up_fd, buf, sizeof(buf), 0);
-            if(rv < 0) {
-                printlog(logfile, system_loglevel, LOG_CRITICAL, 
-                        "recv call failed: %s\n", strerror(errno));
-            } else {
-                nfq_handle_packet(h, buf, rv);
-            }
-        }*/
+           if(FD_ISSET(up_fd, &rfds)) {
+           rv = recv(up_fd, buf, sizeof(buf), 0);
+           if(rv < 0) {
+           printlog(logfile, system_loglevel, LOG_CRITICAL, 
+           "recv call failed: %s\n", strerror(errno));
+           } else {
+           nfq_handle_packet(h, buf, rv);
+           }
+           }*/
     }
 
     // start the upstream code, later move to a thread
