@@ -92,6 +92,7 @@ void update_hash_memory(uint32_t current_oid, unsigned char *payload,
         hash_value = compute_hash(payload, last_marker, chunk_length);
         update_hashes(current_oid, payload, chunk_length, last_marker,
                 hash_value, current_time);
+	last_marker = store_marks[i];
     }
 
     /* hashes of the tail */

@@ -40,7 +40,7 @@ uint64_t insert_hash(uint16_t chunk_length, uint16_t *packed_upto,
     uint32_t left = 0, right = 0;
     hashlittle2((void*)(payload + last_marker), chunk_length, &right, &left);
     printlog(logfile, system_loglevel, LOG_DEBUG, "Hashing chunk"
-            " from %d to %d\n", local_packed_upto, local_packed_upto +
+            " from %d to %d\n", packed_upto, packed_upto +
             chunk_length);
     uint64_t hash_value = right + (((uint64_t)left)<<32);
     uint16_t advance_by = 0;
@@ -169,7 +169,7 @@ int dedup(struct nfq_data* buf, int *size) {
 
     for(list<uint64_t>::iterator it = current_hash_list.begin(); it !=
         current_hash_list.end(); it++) {
-    	printlog(logfile, system_loglevel, LOG_DEBUG, "Inserting hash %llx\n", it);
+    	//printlog(logfile, system_loglevel, LOG_DEBUG, "Inserting hash %llx\n", it);
         regular_cache[(*it)] = current_timestamp;
     }
 
@@ -214,7 +214,7 @@ static int cbDown(struct nfq_q_handle *qh, struct nfgenmsg *nfmsg,
     int i, newSize;
     u_int32_t id = dedup(nfa, &newSize);
     printlog(logfile, system_loglevel, LOG_DEBUG, "ID of the packet"
-            "to be sent out %u\n", id);
+            " to be sent out %u\n", id);
     i = nfq_get_payload(nfa, &send_data);
     return nfq_set_verdict(qh, id, NF_ACCEPT, newSize, (unsigned char *)send_data);
 }
